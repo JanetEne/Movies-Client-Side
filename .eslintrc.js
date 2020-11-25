@@ -19,6 +19,7 @@ module.exports = {
     'linebreak-style': 0,
     'object-curly-newline': 'off',
     'implicit-arrow-linebreak': 'off',
-    'operator-linebreak': 'off'
+    'operator-linebreak': 'off',
+    'arrow-body-style': ['error', 'always']
   }
 };
