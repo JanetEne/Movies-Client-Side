@@ -1,24 +1,30 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
 import {
-  Wrap,
-  LoginText,
-  OuterDiv,
   FormContainer,
+  Wrap,
+  OuterDiv,
+  SignupText,
   StyledContainer,
+  BottomText,
   FormInput,
-  DontHaveAccount,
   CheckboxText
 } from './styles'
 
-const SignInComponent = () => {
+const SignupComponent = () => {
   return (
     <Wrap>
       <OuterDiv>
         <FormContainer>
-          <LoginText>Account Login</LoginText>
+          <SignupText>Sign Up</SignupText>
           <StyledContainer>
             <Form>
+              <Form.Group controlId="formBasicEmail">
+                <FormInput type="email" placeholder="Enter Firstname" />
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+                <FormInput type="email" placeholder="Enter Lastname" />
+              </Form.Group>
               <Form.Group controlId="formBasicEmail">
                 <FormInput type="email" placeholder="Enter email" />
               </Form.Group>
@@ -26,21 +32,25 @@ const SignInComponent = () => {
               <Form.Group controlId="formBasicPassword">
                 <FormInput type="password" placeholder="Password" />
               </Form.Group>
+              <Form.Group controlId="formBasicPassword">
+                <FormInput type="password" placeholder="Confirm Password" />
+              </Form.Group>
               <Form.Group controlId="formBasicCheckbox">
-                <CheckboxText type="checkbox" label="Remember Me" />
+                <CheckboxText
+                  type="checkbox"
+                  label="I agree to the terms and conditions."
+                />
               </Form.Group>
               <Button variant="light" type="submit" block>
                 Submit
               </Button>
             </Form>
           </StyledContainer>
-          <DontHaveAccount>
-            Don't have an account? Sign up here!
-          </DontHaveAccount>
+          <BottomText>Already have an account? Login here.</BottomText>
         </FormContainer>
       </OuterDiv>
     </Wrap>
   )
 }
 
-export default SignInComponent
+export default SignupComponent
