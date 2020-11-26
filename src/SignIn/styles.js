@@ -5,7 +5,9 @@ import { Container, FormControl, FormCheck } from 'react-bootstrap'
 export const Wrap = styled.div`
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-image: url(https://cdn.hipwallpaper.com/i/98/21/dUyCkp.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
 `
