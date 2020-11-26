@@ -20,6 +20,7 @@ module.exports = {
     'object-curly-newline': 'off',
     'implicit-arrow-linebreak': 'off',
     'operator-linebreak': 'off',
-    'arrow-body-style': ['error', 'always']
+    'arrow-body-style': ['error', 'always'],
+    'import/no-extraneous-dependencies': ['error', {devDependencies: true }]
   }
 };
