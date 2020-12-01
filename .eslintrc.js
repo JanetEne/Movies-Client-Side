@@ -21,6 +21,6 @@ module.exports = {
     'implicit-arrow-linebreak': 'off',
     'operator-linebreak': 'off',
     'arrow-body-style': ['error', 'always'],
-    'import/no-extraneous-dependencies': ['error', {devDependencies: true }]
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
   }
-};
+}
