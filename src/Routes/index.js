@@ -4,6 +4,7 @@ import Welcome from '../Welcome'
 import SignIn from '../SignIn/Signin'
 import SignUp from '../SignUp/SignUp'
 import MoviePage from '../MoviesPage/MoviesPage'
+import AddMovie from '../AddMovieComponent/AddMovie'
 
 const Routes = () => {
   return (
@@ -19,6 +20,8 @@ const Routes = () => {
       </Route>
       <Route path="/allMovies">
         <MoviePage />
+      <Route path="/addmovie">
+        <AddMovie />
       </Route>
     </Switch>
   )
