@@ -1,11 +1,9 @@
 import React from 'react'
-
+import MoviesPage from '../MoviesPage/MoviesPage'
 
 const Welcome = () => {
   return (
-    <div>
-      <h1>hey</h1>
-    </div>
+  <MoviesPage />
   )
 }
 
