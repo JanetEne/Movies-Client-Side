@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import {
   Wrap,
   LoginText,
@@ -35,7 +36,7 @@ const SignInComponent = () => {
             </Form>
           </StyledContainer>
           <DontHaveAccount>
-            Don't have an account? Sign up here!
+            Don't have an account? <Link to="/signup">Sign up here!</Link>
           </DontHaveAccount>
         </FormContainer>
       </OuterDiv>

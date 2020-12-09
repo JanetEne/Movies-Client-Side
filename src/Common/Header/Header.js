@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import { StyledNavtext } from './styles'
 
@@ -9,8 +10,8 @@ const HeaderComponent = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#home">Movies</Nav.Link>
+          <Nav.Link as= {Link} to='/'>Home</Nav.Link>
+          <Nav.Link  as= {Link} to='/allmovies'>Movies</Nav.Link>
           <Nav.Link href="#link">My Movies</Nav.Link>
           <NavDropdown title="Genres" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

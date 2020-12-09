@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import {
   FormContainer,
   Wrap,
@@ -46,7 +47,9 @@ const SignupComponent = () => {
               </Button>
             </Form>
           </StyledContainer>
-          <BottomText>Already have an account? Login here.</BottomText>
+          <BottomText>
+            Already have an account? <Link to="login"> Login here.</Link>
+          </BottomText>
         </FormContainer>
       </OuterDiv>
     </Wrap>
