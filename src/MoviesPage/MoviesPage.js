@@ -18,19 +18,6 @@ const movies = [
       'https://cdn.theatlantic.com/thumbor/VQhcb1fR1ooLI1wHEJkADHBraDc=/0x84:1600x984/720x405/media/img/mt/2015/01/liamneeson/original.jpg'
   },
   {
-    title: 'Bird Box',
-    genres: 'Horror, Sci-Fi ',
-    writers: ' Eric Heisserer',
-    cast: ' Sandra Bullock, Trevante Rhodes, John Malkovich',
-    plot:
-      'Five years after an ominous unseen presence drives most of society to suicide, a mother and her two children make a desperate bid to reach safety.',
-    year: 2018,
-    likes: 25,
-    ratings: 10,
-    image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTssjnqCsTO63dyd56EYht-eqf6c_DoVCMwKQ&usqp=CAU'
-  },
-  {
     title: 'The Old Guard',
     genres: 'Action, Adventure, Fantasy',
     writers: ' Luc Besson, Robert Mark Kamen',

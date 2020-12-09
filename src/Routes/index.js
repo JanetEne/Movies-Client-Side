@@ -20,6 +20,7 @@ const Routes = () => {
       </Route>
       <Route path="/allMovies">
         <MoviePage />
+      </Route>
       <Route path="/addmovie">
         <AddMovie />
       </Route>

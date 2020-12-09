@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 
 export const Container = styled.div`
-  width: 350px;
-  height: 500px;
+  width: 300px;
+  height: 350px;
 `
 
 export const ImageContainer = styled.div`
@@ -12,17 +12,16 @@ export const ImageContainer = styled.div`
     filter: grayscale(0);
   }
 
-  &:hover h6 {
-    top: 40%;
-    opacity: 1;
+  &:hover h4 {
+    top: 0;
   }
 `
 
 export const InnerImageWrap = styled.div`
   position: relative;
-  width: 440px;
-  height: 500px;
-  padding: 50px;
+  width: 300px;
+  height: 350px;
+  padding: 3px;
   overflow: hidden;
   transition: 0.5s ease transform;
   transform: translateZ(0) scale(1);
@@ -41,20 +40,38 @@ export const StyledImage = styled.img`
   height: 400px;
 `
 
-export const Title = styled.h6`
+export const TitleContainer = styled.div`
   position: absolute;
-  top: 80%;
-  display: block;
-  left: 10%;
-  margin: 0;
-  padding: 5px 10px;
-  font-size: 15px;
-  line-height: 1.3;
-  text-align: center;
-  text-transform: capitalize;
-  word-wrap: break-word;
-  color: #fff;
-  opacity: 0;
+  z-index: 30;
+  top: 54%;
+  bottom: auto;
   transform: translateY(-50%);
-  transition: 0.3s ease-out;
+  width: 50%;
+  max-width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  color: #ddd;
+  padding: 5px;
+  transition: 1s max-height ease-out, 0.4s 0.1s bottom ease-out;
+`
+
+export const Title = styled.h6`
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin: 0;
+`
+
+export const DescriptionContainer = styled.h4`
+  top: -30px;
+  transition: 1s max-height ease-out, 0.6s opacity ease-out, 0.4s top ease-out;
+  position: relative;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  line-height: 0.3;
+  opacity: 0.7;
+  margin: 3px 0;
 `

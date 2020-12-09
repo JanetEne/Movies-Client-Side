@@ -3,19 +3,24 @@ import {
   ImageContainer,
   InnerImageWrap,
   StyledImage,
+  TitleContainer,
+  Container,
   Title,
-  Container
+  DescriptionContainer
 } from './styles'
 
 const MovieCard = ({ movie }) => {
-  const { image, title } = movie
+  const { image, title, plot } = movie
   return (
     <Container>
       <ImageContainer>
         <InnerImageWrap>
           <StyledImage src={image} alt="photo" />
         </InnerImageWrap>
-        <Title>{title}</Title>
+        <TitleContainer>
+          <Title>{title}</Title>
+          <DescriptionContainer>{plot}</DescriptionContainer>
+        </TitleContainer>
       </ImageContainer>
     </Container>
   )
