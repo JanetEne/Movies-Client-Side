@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import Welcome from '../Welcome'
 import SignIn from '../SignIn/Signin'
 import SignUp from '../SignUp/SignUp'
+import MoviePage from '../MoviesPage/MoviesPage'
 import AddMovie from '../AddMovieComponent/AddMovie'
 
 const Routes = () => {
@@ -16,6 +17,9 @@ const Routes = () => {
       </Route>
       <Route path="/login">
         <SignIn />
+      </Route>
+      <Route path="/allMovies">
+        <MoviePage />
       </Route>
       <Route path="/addmovie">
         <AddMovie />

@@ -1,9 +1,11 @@
 import React from 'react'
-import MovieCard from '../Common/MoviesCard/MoviesCard'
+
 
 const Welcome = () => {
   return (
-      <MovieCard />
+    <div>
+      <h1>hey</h1>
+    </div>
   )
 }
 
