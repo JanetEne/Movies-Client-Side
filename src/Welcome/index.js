@@ -1,9 +1,9 @@
 import React from 'react'
-import MoviesPage from '../MoviesPage/MoviesPage'
+import AllMovies from '../AllMovies/AllMoviesComponent'
 
 const Welcome = () => {
   return (
-  <MoviesPage />
+  <AllMovies />
   )
 }
 
