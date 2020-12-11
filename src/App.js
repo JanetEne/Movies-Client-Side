@@ -7,7 +7,7 @@ import Routes from './Routes'
 
 const App = () => {
   return (
-    <div>
+    <div classname='app'>
       <HeaderComponent />
       <Routes />
       <Footer />
