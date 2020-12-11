@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import Welcome from '../Welcome'
 import SignIn from '../SignIn/Signin'
 import SignUp from '../SignUp/SignUp'
-import AllMovies from '../AllMovies/AllMoviesComponent'
+import AllMovies from '../AllMovies'
 import AddMovie from '../AddMovieComponent/AddMovie'
 
 const Routes = () => {
