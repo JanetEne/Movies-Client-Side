@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
   ImageContainer,
   InnerImageWrap,
@@ -15,7 +16,9 @@ const MovieCard = ({ movie }) => {
     <Container>
       <ImageContainer>
         <InnerImageWrap>
-          <StyledImage src={image} alt="photo" />
+          <Link to="/movie">
+            <StyledImage src={image} alt="photo" />
+          </Link>
         </InnerImageWrap>
         <TitleContainer>
           <Title>{title}</Title>
