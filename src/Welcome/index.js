@@ -1,11 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import AllMovies from '../AllMovies/AllMoviesComponent'
+import Slider from '../Common/Slider/Slider'
 
 const Welcome = () => {
-  const movies = useSelector(state => state.movies)
   return (
-  <AllMovies movielist={movies}/>
+    <Slider />
   )
 }
 

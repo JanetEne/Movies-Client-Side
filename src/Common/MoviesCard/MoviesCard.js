@@ -11,13 +11,13 @@ import {
 } from './styles'
 
 const MovieCard = ({ movie }) => {
-  const { image, title, plot } = movie
+  const { img, title, plot } = movie
   return (
     <Container>
       <ImageContainer>
         <InnerImageWrap>
           <Link to="/movie">
-            <StyledImage src={image} alt="photo" />
+            <StyledImage src={img} alt="a quiet place" />
           </Link>
         </InnerImageWrap>
         <TitleContainer>
