@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {getMovies} from '../Store/actions'
+import {getMovies} from '../store/movies/actionTypes'
+import MoviesCard from '../Common/MoviesCard/MoviesCard'
 
 class Movies extends Component {
   componentDidMount() {
@@ -13,11 +14,7 @@ class Movies extends Component {
 
     return (
       <div>
-        {movies.map((movie) => (
-          <React.Fragment key={movie.id}>
-            <h6>{movie.name}</h6>
-          </React.Fragment>
-        ))}
+        <h6>hello</h6>
       </div>
     )
   }
