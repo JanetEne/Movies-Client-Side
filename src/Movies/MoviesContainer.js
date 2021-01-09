@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import AllMovies from './AllMovies'
+import Movies from './Movies'
 import { fetchMovies } from '../store/movies/actions'
 
 const mapStateToProps = (state) => ({
@@ -10,4 +10,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchMovies: () => dispatch(fetchMovies())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllMovies)
+export default connect(mapStateToProps, mapDispatchToProps)(Movies)

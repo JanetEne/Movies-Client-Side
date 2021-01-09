@@ -1,4 +1,4 @@
-import { getMovies, MOVIES_ERROR } from './actionTypes'
+import { getMovies, getMoviesError, getMovie, getMovieError } from './actionTypes'
 import axios from 'axios'
 
 export const fetchMovies = () => async (dispatch) => {
@@ -6,10 +6,16 @@ export const fetchMovies = () => async (dispatch) => {
     const res = await axios.get(`http://localhost:8080/api/v1/movies`)
     dispatch(getMovies(res.data))
   } catch (e) {
-    dispatch({
-      type: MOVIES_ERROR,
-      payload: console.log(e)
-    })
+    dispatch(getMoviesError())
+  }
+}
+
+export const fetchMovie = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`http://localhost:8080/api/v1/movie/${id}`)
+    dispatch(getMovie(res.data))
+  } catch (e) {
+    dispatch(getMovieError())
   }
 }
 
