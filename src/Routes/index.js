@@ -3,10 +3,9 @@ import { Switch, Route } from 'react-router-dom'
 import Welcome from '../Welcome'
 import SignIn from '../SignIn/Signin'
 import SignUp from '../SignUp/SignUp'
-import AllMovies from '../AllMovies'
+import Movies from '../Movies'
 import AddMovie from '../AddMovieComponent/AddMovie'
-import ViewMovie from '../MovieView/viewMovie'
-import Movies from '../MovieViewComponent/Movies'
+import Movie from '../Movies/Movie'
 
 const Routes = () => {
   return (
@@ -20,18 +19,13 @@ const Routes = () => {
       <Route path="/login">
         <SignIn />
       </Route>
-      <Route path="/allMovies">
-        <AllMovies />
+      <Route path="/movies" exact>
+        <Movies />
       </Route>
       <Route path="/addmovie">
         <AddMovie />
       </Route>
-      <Route path="/movie">
-        <ViewMovie />
-      </Route>
-      <Route path="/movies">
-        <Movies />
-      </Route>
+      <Route path="/movies/:id" component={Movie} />
     </Switch>
   )
 }
