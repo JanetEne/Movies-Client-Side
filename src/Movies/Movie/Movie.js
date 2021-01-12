@@ -38,7 +38,7 @@ class SingleMovie extends React.Component {
     const { movie } = this.props
     const {
       title,
-      genre,
+      genres,
       writers,
       cast,
       plot,
@@ -53,7 +53,7 @@ class SingleMovie extends React.Component {
         <ItemContainer>
           <Title>{title}</Title>
           <GenreContainer>
-            <Genre>{genre}</Genre>
+            <Genre>{genres}</Genre>
             <Year>({year})</Year>
           </GenreContainer>
           <IconContainer>

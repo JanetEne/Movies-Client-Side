@@ -1,4 +1,11 @@
-import { getMovies, getMoviesError, getMovie, getMovieError } from './actionTypes'
+import {
+  getMovies,
+  getMoviesError,
+  getMovie,
+  getMovieError,
+  addMovie,
+  addMovieError
+} from './actionTypes'
 import axios from 'axios'
 
 export const fetchMovies = () => async (dispatch) => {
@@ -19,3 +26,20 @@ export const fetchMovie = (id) => async (dispatch) => {
   }
 }
 
+export const postMovie = (newMovie) => async (dispatch) => {
+  try {
+    const token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJ2YW5lc3NhIiwibGFzdE5hbWUiOiJPZ2VueWkiLCJlbWFpbCI6InZhbmVAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTYxMDQ4MjIyOX0.M9MqrGBuY9Rk8yMk3qK7_dgXosvjoih9jOAb_rzyF7U'
+    const header = {
+      Authorization: `Bearer ${token}`
+    }
+    const res = await axios.post(
+      `http://localhost:8080/api/v1/movies`,
+      newMovie,
+      header
+    )
+    dispatch(addMovie(res.data))
+  } catch (e) {
+    dispatch(addMovieError())
+  }
+}
