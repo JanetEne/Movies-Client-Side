@@ -4,7 +4,7 @@ import Welcome from '../Welcome'
 import SignIn from '../SignIn/Signin'
 import SignUp from '../SignUp/SignUp'
 import Movies from '../Movies'
-import AddMovie from '../AddMovieComponent/AddMovie'
+import AddMovie from '../Movies/AddMovie'
 import Movie from '../Movies/Movie'
 
 const Routes = () => {
