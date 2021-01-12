@@ -17,7 +17,7 @@ class AddMovieComponent extends React.Component {
     plot: '',
     cast: '',
     year: '',
-    genre: '',
+    genres: '',
     img: ''
   }
 
@@ -31,20 +31,20 @@ class AddMovieComponent extends React.Component {
   handleButtonChange = (event) => {
     const { value } = event.target
     this.setState({
-      genre: value
+      genres: value
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     const { addMovie } = this.props
-    const { title, writers, plot, cast, year, genre, img } = this.state
-    const newMovie = { title, writers, plot, cast, year, genre, img }
+    const { title, writers, plot, cast, year, genres, img } = this.state
+    const newMovie = { title, writers, plot, cast, year, genres, img }
     addMovie(newMovie)
   }
 
   render() {
-    const { title, writers, plot, cast, year, genre, img } = this.state
+    const { title, writers, plot, cast, year, genres, img } = this.state
     return (
       <Wrap>
         <StyledContainer>
@@ -108,7 +108,7 @@ class AddMovieComponent extends React.Component {
                   type={type}
                   id={`inline-${type}-1`}
                   value="Horror"
-                  checked={genre === 'Horror'}
+                  checked={genres === 'Horror'}
                   onChange={this.handleButtonChange}
                 />
                 <Form.Check
@@ -117,7 +117,7 @@ class AddMovieComponent extends React.Component {
                   type={type}
                   id={`inline-${type}-2`}
                   value="Comedy"
-                  checked={genre === 'Comedy'}
+                  checked={genres === 'Comedy'}
                   onChange={this.handleButtonChange}
                 />
                 <Form.Check
@@ -126,7 +126,7 @@ class AddMovieComponent extends React.Component {
                   type={type}
                   id={`inline-${type}-3`}
                   value="Sci-Fi"
-                  checked={genre === 'Sci-Fi'}
+                  checked={genres === 'Sci-Fi'}
                   onChange={this.handleButtonChange}
                 />
                 <Form.Check
@@ -135,7 +135,7 @@ class AddMovieComponent extends React.Component {
                   type={type}
                   id={`inline-${type}-3`}
                   value="Drama"
-                  checked={genre === 'Drama'}
+                  checked={genres === 'Drama'}
                   onChange={this.handleButtonChange}
                 />
                 <Form.Check
@@ -144,7 +144,7 @@ class AddMovieComponent extends React.Component {
                   type={type}
                   id={`inline-${type}-3`}
                   value="Action"
-                  checked={genre === 'Action'}
+                  checked={genres === 'Action'}
                   onChange={this.handleButtonChange}
                 />
                 <Form.Check
@@ -153,7 +153,7 @@ class AddMovieComponent extends React.Component {
                   type={type}
                   id={`inline-${type}-3`}
                   value="Thriller"
-                  checked={genre === 'Thriller'}
+                  checked={genres === 'Thriller'}
                   onChange={this.handleButtonChange}
                 />
                 <Form.Check
@@ -162,7 +162,7 @@ class AddMovieComponent extends React.Component {
                   type={type}
                   id={`inline-${type}-3`}
                   value="Romance"
-                  checked={genre === 'Romance'}
+                  checked={genres === 'Romance'}
                   onChange={this.handleButtonChange}
                 />
                 <Form.Check
@@ -171,7 +171,7 @@ class AddMovieComponent extends React.Component {
                   type={type}
                   id={`inline-${type}-3`}
                   value="Animation"
-                  checked={genre === 'Animation'}
+                  checked={genres === 'Animation'}
                   onChange={this.handleButtonChange}
                 />
               </div>
