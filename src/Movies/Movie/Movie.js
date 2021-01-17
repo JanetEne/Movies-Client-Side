@@ -1,4 +1,6 @@
 import React from 'react'
+import { withRouter } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
 import {
   faStarHalfAlt,
   faStar,
@@ -32,6 +34,17 @@ class SingleMovie extends React.Component {
       }
     } = this.props
     getMovie(id)
+  }
+
+  handleDelete = () => {
+      const {
+        deleteMovie,
+        history,
+        match: {
+          params: { id }
+        }
+      } = this.props
+      deleteMovie(id, history)
   }
 
   render() {
@@ -72,11 +85,26 @@ class SingleMovie extends React.Component {
             <StyledHeart icon={faHeart} />
             <Likes>{likes}</Likes>
           </IconContainer>
-          <ButtonComponent variant="primary" text="Watch Now" />
+          <ButtonComponent
+            variant="primary"
+            text="Watch Now"
+            style={{ width: '30%', marginTop: '20px' }}
+          />
+          <ButtonComponent
+            text="Edit"
+            variant="light"
+            style={{ width: '30%', marginTop: '20px' }}
+          />
+          <Button
+            variant="secondary"
+            style={{ width: '30%', marginTop: '20px' }}
+            onClick={this.handleDelete}
+          >Delete</Button>
         </ItemContainer>
       </Wrap>
     )
   }
 }
 
-export default SingleMovie
+export default withRouter(SingleMovie)
+

@@ -196,7 +196,7 @@ class AddMovieComponent extends React.Component {
                 onChange={this.handleInputChange}
               />
             </Form.Group>
-            <input value="submit" type='submit' />
+            <input value="submit" type='submit' style={{width: '100%', marginTop: '20px'}}/>
           </Form>
         </StyledContainer>
       </Wrap>
