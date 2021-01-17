@@ -1,5 +1,6 @@
 import React from 'react'
 import Slider from '../Common/Slider/Slider'
+import {Wrap} from './styles'
 
 class Welcome extends React.Component {
   componentDidMount() {
@@ -9,7 +10,11 @@ class Welcome extends React.Component {
   render() {
     const { sliderData } = this.props
 
-    return <Slider slides={sliderData} />
+    return (
+<Wrap>
+    <Slider slides={sliderData} />
+    </Wrap>
+    )
   }
 }
 

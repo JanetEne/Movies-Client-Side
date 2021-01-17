@@ -1,11 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
-import { StyledNavtext } from './styles'
+import { StyledNavtext, Wrap } from './styles'
 
 const HeaderComponent = () => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Wrap>
+    <Navbar expand="lg">
       <StyledNavtext href="#home">Movies</StyledNavtext>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -31,6 +32,7 @@ const HeaderComponent = () => {
         </Form>
       </Navbar.Collapse>
     </Navbar>
+    </Wrap>
   )
 }
 
