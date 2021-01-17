@@ -6,7 +6,9 @@ import {
   addMovie,
   addMovieError,
   deleteMovie,
-  deleteMovieError
+  deleteMovieError,
+  editMovie,
+  editMovieError
 } from './actionTypes'
 import axios from 'axios'
 
@@ -58,5 +60,23 @@ export const removeMovie = (id, history) => async (dispatch) => {
     history ? history.push('/movies') :  window.location.reload()
   } catch (e) {
     dispatch(deleteMovieError())
+  }
+}
+
+export const updateMovie = (newMovie,id) => async (dispatch) => {
+  try {
+    const token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJ2YW5lc3NhIiwibGFzdE5hbWUiOiJPZ2VueWkiLCJlbWFpbCI6InZhbmVAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTYxMDQ4MjIyOX0.M9MqrGBuY9Rk8yMk3qK7_dgXosvjoih9jOAb_rzyF7U'
+    const header = {
+      Authorization: `Bearer ${token}`
+    }
+    const res = await axios.put(
+      `http://localhost:8080/api/v1/movies/${id}`,
+      newMovie,
+      header
+    )
+    dispatch(editMovie(res.data))
+  } catch (e) {
+    dispatch(editMovieError())
   }
 }
