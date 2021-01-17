@@ -1,6 +1,5 @@
 import React from 'react'
 import MoviesCard from '../Common/MoviesCard/MoviesCard'
-import { Link } from 'react-router-dom'
 import { Row } from 'react-bootstrap'
 import { StyledContainer } from './style'
 
@@ -8,6 +7,13 @@ class Movies extends React.Component {
   componentDidMount() {
     this.props.fetchMovies()
   }
+
+  handleDelete = (id) => {
+    const {
+      deleteMovie
+    } = this.props
+    deleteMovie(id)
+}
 
   render() {
     const { movies } = this.props
@@ -19,9 +25,7 @@ class Movies extends React.Component {
         <StyledContainer>
           <Row>
             {movies.map((movie, index) => (
-              <Link to={`movies/${movie.id}`}>
-                <MoviesCard movie={movie} key={index} />
-              </Link>
+                <MoviesCard movie={movie} key={index} handleDelete={this.handleDelete}/>
             ))}
           </Row>
         </StyledContainer>
@@ -29,4 +33,5 @@ class Movies extends React.Component {
     )
   }
 }
+
 export default Movies

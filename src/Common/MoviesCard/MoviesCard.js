@@ -1,28 +1,36 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import {
   ImageContainer,
   InnerImageWrap,
   StyledImage,
-  TitleContainer,
-  Container,
-  Title,
-  DescriptionContainer
+  Container
 } from './styles'
 
-const MovieCard = ({ movie }) => {
-  const { img, title, plot } = movie
+const MovieCard = ({ movie, handleDelete }) => {
+
+  const { img, id } = movie
+
   return (
-    <Container>
-      <ImageContainer>
-        <InnerImageWrap>
-            <StyledImage src={img} alt="a quiet place" />
-        </InnerImageWrap>
-        <TitleContainer>
-          <Title>{title}</Title>
-          <DescriptionContainer>{plot}</DescriptionContainer>
-        </TitleContainer>
-      </ImageContainer>
-    </Container>
+    <div>
+      <Container>
+      <Link to={`movies/${movie.id}`}>
+        <ImageContainer>
+          <InnerImageWrap>
+            <StyledImage src={img} alt="picture display" />
+          </InnerImageWrap>
+        </ImageContainer>
+        </Link>
+      </Container>
+      <Button
+        variant="secondary"
+        style={{ width: '30%', marginTop: '20px' }}
+        onClick={()=> handleDelete(id)}
+      >
+        Delete
+      </Button>
+    </div>
   )
 }
 
