@@ -7,8 +7,7 @@ import {
   UploadImage,
   StyledContainer
 } from './styles'
-import { Form } from 'react-bootstrap'
-import Button from '../../Common/Buttons'
+import { Form, Button } from 'react-bootstrap'
 
 class AddMovieComponent extends React.Component {
   state = {
@@ -19,6 +18,30 @@ class AddMovieComponent extends React.Component {
     year: '',
     genres: '',
     img: ''
+  }
+
+  componentDidMount() {
+    this.fetchMovie()
+  }
+
+  fetchMovie = () => {
+    const {
+      match: { url }
+    } = this.props
+    const isEdit = this.checkIsEdit(url)
+    if (isEdit) {
+      const {
+        getMovie,
+        match: {
+          params: { id }
+        }
+      } = this.props
+      getMovie(id)
+    }
+  }
+
+  checkIsEdit = (url) => {
+    return url.split('/').includes('edit')
   }
 
   handleInputChange = (event) => {
@@ -36,15 +59,21 @@ class AddMovieComponent extends React.Component {
   }
 
   handleSubmit = (event) => {
-    event.preventDefault();
-    const { addMovie } = this.props
+    event.preventDefault()
+    const {
+      addMovie, updateMovie, movie,
+      match: { url }
+    } = this.props
+    const isEdit = this.checkIsEdit(url)
     const { title, writers, plot, cast, year, genres, img } = this.state
     const newMovie = { title, writers, plot, cast, year, genres, img }
-    addMovie(newMovie)
+    isEdit ? updateMovie(newMovie, movie.id) : addMovie(newMovie)
   }
 
   render() {
+    const { movie } = this.props
     const { title, writers, plot, cast, year, genres, img } = this.state
+    const titleV = title || movie.title
     return (
       <Wrap>
         <StyledContainer>
@@ -55,7 +84,7 @@ class AddMovieComponent extends React.Component {
               <FormInput
                 type="text"
                 name="title"
-                value={title}
+                value={titleV}
                 onChange={this.handleInputChange}
               />
             </Form.Group>
@@ -87,8 +116,8 @@ class AddMovieComponent extends React.Component {
                 value={plot}
                 onChange={this.handleInputChange}
               />
-              </Form.Group>
-              <Form.Group controlId="formGroupDescription">
+            </Form.Group>
+            <Form.Group controlId="formGroupDescription">
               <Form.Label>Image Url</Form.Label>
               <FormInput
                 as="textarea"
@@ -196,7 +225,11 @@ class AddMovieComponent extends React.Component {
                 onChange={this.handleInputChange}
               />
             </Form.Group>
-            <input value="submit" type='submit' style={{width: '100%', marginTop: '20px'}}/>
+            <input
+              value="submit"
+              type="submit"
+              style={{ width: '100%', marginTop: '20px' }}
+            />
           </Form>
         </StyledContainer>
       </Wrap>

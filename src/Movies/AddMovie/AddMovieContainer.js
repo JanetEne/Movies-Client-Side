@@ -1,10 +1,15 @@
 import { connect } from 'react-redux'
 import AddMovie from './AddMovie'
-import { postMovie, updateMovie } from '../../store/movies/actions'
+import { postMovie, updateMovie, fetchMovie } from '../../store/movies/actions'
+
+const mapStateToProps = (state) => ({
+  movie: state.movies.movie
+})
 
 const mapDispatchToProps = (dispatch) => ({
   addMovie: (newMovie) => dispatch(postMovie(newMovie)),
-  editMovie: (newMovie) => dispatch(updateMovie(newMovie))
+  getMovie: (id) => dispatch(fetchMovie(id)),
+  updateMovie: (details, id) => dispatch(updateMovie(details, id))
 })
 
-export default connect(null, mapDispatchToProps)(AddMovie)
+export default connect(mapStateToProps, mapDispatchToProps)(AddMovie)
