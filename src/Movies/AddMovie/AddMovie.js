@@ -11,13 +11,13 @@ import { Form, Button } from 'react-bootstrap'
 
 class AddMovieComponent extends React.Component {
   state = {
-    title: '',
-    writers: '',
-    plot: '',
-    cast: '',
-    year: '',
-    genres: '',
-    img: ''
+    title: this.props.movie.title,
+    writers: this.props.movie.writers,
+    plot: this.props.movie.plot,
+    cast: this.props.movie.cast,
+    year: this.props.movie.year,
+    genres: this.props.movie.genres,
+    img: this.props.movie.img
   }
 
   componentDidMount() {
@@ -25,11 +25,7 @@ class AddMovieComponent extends React.Component {
   }
 
   fetchMovie = () => {
-    const {
-      match: { url }
-    } = this.props
-    const isEdit = this.checkIsEdit(url)
-    if (isEdit) {
+    if (!this.props.movie.id && this.checkIsEdit(this.props.match.url)) {
       const {
         getMovie,
         match: {
@@ -71,9 +67,12 @@ class AddMovieComponent extends React.Component {
   }
 
   render() {
-    const { movie } = this.props
     const { title, writers, plot, cast, year, genres, img } = this.state
-    const titleV = title || movie.title
+    const {
+      match: { url }
+    } = this.props
+    const isEdit = this.checkIsEdit(url)
+    // const titleV = title || movie.title
     return (
       <Wrap>
         <StyledContainer>
@@ -84,7 +83,7 @@ class AddMovieComponent extends React.Component {
               <FormInput
                 type="text"
                 name="title"
-                value={titleV}
+                value={title}
                 onChange={this.handleInputChange}
               />
             </Form.Group>
