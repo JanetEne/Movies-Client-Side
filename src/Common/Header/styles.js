@@ -12,3 +12,8 @@ export const StyledNavtext = styled(Navbar)`
 export const Wrap = styled.div`
   background-color: black;
 `
+
+export const StyledNav = styled.div`
+color: white,
+font-size: 15px;
+`

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
-import { StyledNavtext, Wrap } from './styles'
+import { StyledNavtext, Wrap, StyledNav } from './styles'
 
 const HeaderComponent = () => {
   return (
@@ -11,9 +11,9 @@ const HeaderComponent = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link as= {Link} to='/'>Home</Nav.Link>
-          <Nav.Link  as= {Link} to='/movies'>Movies</Nav.Link>
-          <Nav.Link  as= {Link} to='/signup'>SignUp</Nav.Link>
+          <StyledNav as= {Link} to='/'>Home</StyledNav>
+          <StyledNav  as= {Link} to='/movies'>Movies</StyledNav>
+          <StyledNav  as= {Link} to='/signup'>SignUp</StyledNav>
           <NavDropdown title="Genres" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">
