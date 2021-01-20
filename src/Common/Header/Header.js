@@ -14,6 +14,8 @@ const HeaderComponent = () => {
           <StyledNav as= {Link} to='/'>Home</StyledNav>
           <StyledNav  as= {Link} to='/movies'>Movies</StyledNav>
           <StyledNav  as= {Link} to='/signup'>SignUp</StyledNav>
+          <StyledNav  as= {Link} to='/login'>SignIn</StyledNav>
+          <StyledNav  as= {Link} to='/addmovie'>Add a Movie</StyledNav>
           <NavDropdown title="Genres" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">
