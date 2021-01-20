@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addMovie: (newMovie) => dispatch(postMovie(newMovie)),
+  addMovie: (newMovie, history) => dispatch(postMovie(newMovie, history)),
   getMovie: (id) => dispatch(fetchMovie(id)),
   updateMovie: (details, id) => dispatch(updateMovie(details, id))
 })
