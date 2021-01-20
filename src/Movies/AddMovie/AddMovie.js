@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter, Link } from 'react-router-dom'
 import {
   Wrap,
   Title,
@@ -7,18 +8,53 @@ import {
   UploadImage,
   StyledContainer
 } from './styles'
-import { Form } from 'react-bootstrap'
-import Button from '../../Common/Buttons'
+import { Form, Button } from 'react-bootstrap'
 
 class AddMovieComponent extends React.Component {
   state = {
-    title: '',
-    writers: '',
-    plot: '',
-    cast: '',
-    year: '',
-    genres: '',
-    img: ''
+    title: this.props.movie.title,
+    writers: this.props.movie.writers,
+    plot: this.props.movie.plot,
+    cast: this.props.movie.cast,
+    year: this.props.movie.year,
+    genres: this.props.movie.genres,
+    img: this.props.movie.img,
+    id: this.props.movie.id
+  }
+
+  componentDidMount() {
+    this.fetchMovie()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.movie.id !== prevProps.movie.id) {
+      this.setState({
+        title: this.props.movie.title,
+        writers: this.props.movie.writers,
+        plot: this.props.movie.plot,
+        cast: this.props.movie.cast,
+        year: this.props.movie.year,
+        genres: this.props.movie.genres,
+        img: this.props.movie.img,
+        id: this.props.movie.id
+      })
+    }
+  }
+
+  fetchMovie = () => {
+    if (!this.props.movie.id && this.checkIsEdit(this.props.match.url)) {
+      const {
+        getMovie,
+        match: {
+          params: { id }
+        }
+      } = this.props
+      getMovie(id)
+    }
+  }
+
+  checkIsEdit = (url) => {
+    return url.split('/').includes('edit')
   }
 
   handleInputChange = (event) => {
@@ -36,15 +72,26 @@ class AddMovieComponent extends React.Component {
   }
 
   handleSubmit = (event) => {
-    event.preventDefault();
-    const { addMovie } = this.props
+    event.preventDefault()
+    const {
+      addMovie,
+      updateMovie,
+      movie,
+      history,
+      match: { url }
+    } = this.props
+    const isEdit = this.checkIsEdit(url)
     const { title, writers, plot, cast, year, genres, img } = this.state
     const newMovie = { title, writers, plot, cast, year, genres, img }
-    addMovie(newMovie)
+    isEdit ? updateMovie(newMovie, movie.id) : addMovie(newMovie, history)
   }
 
   render() {
-    const { title, writers, plot, cast, year, genres, img } = this.state
+    const {
+      match: { url }
+    } = this.props
+    const isEdit = this.checkIsEdit(url)
+    const { title, writers, plot, cast, year, genres, img, id } = this.state
     return (
       <Wrap>
         <StyledContainer>
@@ -87,8 +134,8 @@ class AddMovieComponent extends React.Component {
                 value={plot}
                 onChange={this.handleInputChange}
               />
-              </Form.Group>
-              <Form.Group controlId="formGroupDescription">
+            </Form.Group>
+            <Form.Group controlId="formGroupDescription">
               <Form.Label>Image Url</Form.Label>
               <FormInput
                 as="textarea"
@@ -196,7 +243,21 @@ class AddMovieComponent extends React.Component {
                 onChange={this.handleInputChange}
               />
             </Form.Group>
-            <input value="submit" type='submit' style={{width: '100%', marginTop: '20px'}}/>
+            <input
+              value="submit"
+              type="submit"
+              style={{ width: '40%', marginTop: '20px' }}
+            />
+            {isEdit && (
+              <Link to={`/movies/${id}`}>
+                <Button
+                  variant="light"
+                  style={{ width: '30%', marginTop: '20px' }}
+                >
+                  View
+                </Button>
+              </Link>
+            )}
           </Form>
         </StyledContainer>
       </Wrap>
@@ -204,4 +265,4 @@ class AddMovieComponent extends React.Component {
   }
 }
 
-export default AddMovieComponent
+export default withRouter(AddMovieComponent)

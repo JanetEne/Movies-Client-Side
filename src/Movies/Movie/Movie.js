@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button'
 import {
   faStarHalfAlt,
@@ -90,11 +90,12 @@ class SingleMovie extends React.Component {
             text="Watch Now"
             style={{ width: '30%', marginTop: '20px' }}
           />
-          <ButtonComponent
-            text="Edit"
+          <Link to={`/movie/${movie.id}/edit`}>
+          <Button
             variant="light"
             style={{ width: '30%', marginTop: '20px' }}
-          />
+          >Edit</Button>
+          </Link>
           <Button
             variant="secondary"
             style={{ width: '30%', marginTop: '20px' }}

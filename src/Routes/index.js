@@ -22,9 +22,8 @@ const Routes = () => {
       <Route path="/movies" exact>
         <Movies />
       </Route>
-      <Route path="/addmovie">
-        <AddMovie />
-      </Route>
+      <Route path="/movie/add" component={AddMovie} />
+      <Route path="/movie/:id/edit" component={AddMovie} />
       <Route path="/movies/:id" component={Movie} />
     </Switch>
   )

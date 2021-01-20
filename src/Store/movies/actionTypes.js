@@ -6,6 +6,8 @@ export const ADD_MOVIE = 'ADD_MOVIE'
 export const ADD_MOVIE_ERROR = 'ADD_MOVIE_ERROR'
 export const DELETE_MOVIE = 'DELETE_MOVIE'
 export const DELETE_MOVIE_ERROR = 'DELETE_MOVIE_ERROR'
+export const EDIT_MOVIE = 'EDIT_MOVIE'
+export const EDIT_MOVIE_ERROR = 'EDIT_MOVIE_ERROR'
 
 
 export const getMovies = (payload) => ({
@@ -41,4 +43,13 @@ export const deleteMovie = () => ({
 
 export const deleteMovieError = () => ({
   type: DELETE_MOVIE_ERROR
+})
+
+export const editMovie = (payload) => ({
+  type: EDIT_MOVIE,
+  payload
+})
+
+export const editMovieError = () => ({
+  type: EDIT_MOVIE_ERROR
 })

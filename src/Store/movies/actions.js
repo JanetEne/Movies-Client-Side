@@ -6,13 +6,18 @@ import {
   addMovie,
   addMovieError,
   deleteMovie,
-  deleteMovieError
+  deleteMovieError,
+  editMovie,
+  editMovieError
 } from './actionTypes'
 import axios from 'axios'
 
+const apiUrl = "http://localhost:8080/api/v1" //process.env.REACT_APP_API_URL
+console.log(apiUrl)
+
 export const fetchMovies = () => async (dispatch) => {
   try {
-    const res = await axios.get(`http://localhost:8080/api/v1/movies`)
+    const res = await axios.get(`${apiUrl}/movies`)
     dispatch(getMovies(res.data))
   } catch (e) {
     dispatch(getMoviesError())
@@ -21,14 +26,14 @@ export const fetchMovies = () => async (dispatch) => {
 
 export const fetchMovie = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`http://localhost:8080/api/v1/movie/${id}`)
+    const res = await axios.get(`${apiUrl}/movie/${id}`)
     dispatch(getMovie(res.data))
   } catch (e) {
     dispatch(getMovieError())
   }
 }
 
-export const postMovie = (newMovie) => async (dispatch) => {
+export const postMovie = (newMovie, history) => async (dispatch) => {
   try {
     const token =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJ2YW5lc3NhIiwibGFzdE5hbWUiOiJPZ2VueWkiLCJlbWFpbCI6InZhbmVAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTYxMDQ4MjIyOX0.M9MqrGBuY9Rk8yMk3qK7_dgXosvjoih9jOAb_rzyF7U'
@@ -36,11 +41,12 @@ export const postMovie = (newMovie) => async (dispatch) => {
       Authorization: `Bearer ${token}`
     }
     const res = await axios.post(
-      `http://localhost:8080/api/v1/movies`,
+      `${apiUrl}/movies`,
       newMovie,
       header
     )
     dispatch(addMovie(res.data))
+    history ? history.push(`/movies/${res.data.id}`) : window.location.reload()
   } catch (e) {
     dispatch(addMovieError())
   }
@@ -53,10 +59,28 @@ export const removeMovie = (id, history) => async (dispatch) => {
     const header = {
       Authorization: `Bearer ${token}`
     }
-    const res = await axios.delete(`http://localhost:8080/api/v1/movies/${id}`, header)
+    const res = await axios.delete(`${apiUrl}/movies/${id}`, header)
     dispatch(deleteMovie())
-    history ? history.push('/movies') :  window.location.reload()
+    history ? history.push('/movies') : window.location.reload()
   } catch (e) {
     dispatch(deleteMovieError())
+  }
+}
+
+export const updateMovie = (details,id) => async (dispatch) => {
+  try {
+    const token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJ2YW5lc3NhIiwibGFzdE5hbWUiOiJPZ2VueWkiLCJlbWFpbCI6InZhbmVAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTYxMDQ4MjIyOX0.M9MqrGBuY9Rk8yMk3qK7_dgXosvjoih9jOAb_rzyF7U'
+    const header = {
+      Authorization: `Bearer ${token}`
+    }
+    const res = await axios.put(
+      `${apiUrl}/movies/${id}`,
+      details,
+      header
+    )
+    dispatch(editMovie(res.data))
+  } catch (e) {
+    dispatch(editMovieError())
   }
 }
