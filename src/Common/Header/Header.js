@@ -15,18 +15,7 @@ const HeaderComponent = () => {
           <StyledNav  as= {Link} to='/movies'>Movies</StyledNav>
           <StyledNav  as= {Link} to='/signup'>SignUp</StyledNav>
           <StyledNav  as= {Link} to='/login'>SignIn</StyledNav>
-          <StyledNav  as= {Link} to='/addmovie'>Add a Movie</StyledNav>
-          <NavDropdown title="Genres" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Comedy
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Drama</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Horror</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Thriller</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Animation</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Romance</NavDropdown.Item>
-          </NavDropdown>
+          <StyledNav  as= {Link} to='/movie/add'>Add a Movie</StyledNav>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />

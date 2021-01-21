@@ -1,6 +1,6 @@
 import React from 'react'
 import Slider from '../Common/Slider/Slider'
-import {Wrap} from './styles'
+import { Wrap, WelcomeText, Text } from './styles'
 
 class Welcome extends React.Component {
   componentDidMount() {
@@ -11,9 +11,11 @@ class Welcome extends React.Component {
     const { sliderData } = this.props
 
     return (
-<Wrap>
-    <Slider slides={sliderData} />
-    </Wrap>
+      <Wrap>
+        <WelcomeText>Welcome to Movies App</WelcomeText>
+        <Text>Enjoy an always-changing selection of free movies, shows, kids, entertainment and more.</Text>
+        <Slider slides={sliderData} />
+      </Wrap>
     )
   }
 }

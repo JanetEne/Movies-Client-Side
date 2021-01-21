@@ -85,11 +85,10 @@ class SingleMovie extends React.Component {
             <StyledHeart icon={faHeart} />
             <Likes>{likes}</Likes>
           </IconContainer>
-          <ButtonComponent
+          <Button
             variant="primary"
-            text="Watch Now"
             style={{ width: '30%', marginTop: '20px' }}
-          />
+          >Watch Now</Button>
           <Link to={`/movie/${movie.id}/edit`}>
           <Button
             variant="light"

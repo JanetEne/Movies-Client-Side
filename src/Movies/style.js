@@ -6,3 +6,7 @@ export const StyledContainer = styled(Container)`
   padding-left: 0;
   padding-right: 0;
 `
+
+export const Wrap = styled.div`
+  background-color: black;
+`

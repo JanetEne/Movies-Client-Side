@@ -1,7 +1,7 @@
 import React from 'react'
 import MoviesCard from '../Common/MoviesCard/MoviesCard'
 import { Row } from 'react-bootstrap'
-import { StyledContainer } from './style'
+import { StyledContainer, Wrap } from './style'
 
 class Movies extends React.Component {
   componentDidMount() {
@@ -21,7 +21,7 @@ class Movies extends React.Component {
     if (movies.length < 1) return <div>...fetching</div>
 
     return (
-      <div>
+      <Wrap>
         <StyledContainer>
           <Row>
             {movies.map((movie, index) => (
@@ -29,7 +29,7 @@ class Movies extends React.Component {
             ))}
           </Row>
         </StyledContainer>
-      </div>
+      </Wrap>
     )
   }
 }
