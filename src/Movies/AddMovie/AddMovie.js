@@ -6,7 +6,8 @@ import {
   FormInput,
   FileLabel,
   UploadImage,
-  StyledContainer
+  StyledContainer,
+  StyledButton
 } from './styles'
 import { Form, Button } from 'react-bootstrap'
 
@@ -243,19 +244,18 @@ class AddMovieComponent extends React.Component {
                 onChange={this.handleInputChange}
               />
             </Form.Group>
-            <input
+            <Button
+              variant="info"
               value="submit"
               type="submit"
-              style={{ width: '40%', marginTop: '20px' }}
-            />
+              style={{ width: '30%', marginTop: '10px', marginLeft: '150px'}}
+              onClick={this.handleSubmit}
+            >
+              Submit
+            </Button>
             {isEdit && (
               <Link to={`/movies/${id}`}>
-                <Button
-                  variant="light"
-                  style={{ width: '30%', marginTop: '20px' }}
-                >
-                  View
-                </Button>
+                <StyledButton variant="info">View</StyledButton>
               </Link>
             )}
           </Form>

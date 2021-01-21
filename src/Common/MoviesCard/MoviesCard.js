@@ -25,7 +25,7 @@ const MovieCard = ({ movie, handleDelete }) => {
       </Container>
       <Button
         variant="secondary"
-        style={{ width: '30%', marginTop: '20px' }}
+        style={{ width: '30%', marginTop: '50px', marginBottom: '50px', alignSelf: 'center'}}
         onClick={()=> handleDelete(id)}
       >
         Delete

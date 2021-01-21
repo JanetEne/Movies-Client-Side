@@ -1,5 +1,11 @@
 import styled from '@emotion/styled'
-import { FormControl, FormFile, FormLabel, Container } from 'react-bootstrap'
+import {
+  FormControl,
+  FormFile,
+  FormLabel,
+  Container,
+  Button
+} from 'react-bootstrap'
 
 export const Wrap = styled.div`
   width: 100%;
@@ -37,4 +43,10 @@ export const UploadImage = styled(FormFile)`
   opacity: 0;
   position: absolute;
   z-index: -1;
+`
+
+export const StyledButton = styled(Button)`
+  margin-left: 150px;
+  width: 30%; 
+  margin-top: 10px;
 `
