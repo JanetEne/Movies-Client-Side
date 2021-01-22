@@ -136,12 +136,10 @@ class AddMovieComponent extends React.Component {
                 onChange={this.handleInputChange}
               />
             </Form.Group>
-            <Form.Group controlId="formGroupDescription">
+            <Form.Group controlId="formGroupTitle">
               <Form.Label>Image Url</Form.Label>
               <FormInput
-                as="textarea"
-                placeholder="Image Url"
-                rows="3"
+                type="text"
                 name="img"
                 value={img}
                 onChange={this.handleInputChange}
