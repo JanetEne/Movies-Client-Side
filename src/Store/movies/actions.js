@@ -8,7 +8,9 @@ import {
   deleteMovie,
   deleteMovieError,
   editMovie,
-  editMovieError
+  editMovieError,
+  loginUser,
+  loginUserError
 } from './actionTypes'
 import axios from 'axios'
 
@@ -82,5 +84,17 @@ export const updateMovie = (details,id) => async (dispatch) => {
     dispatch(editMovie(res.data))
   } catch (e) {
     dispatch(editMovieError())
+  }
+}
+
+export const loginAUser = (newUser) => async (dispatch) => {
+  try {
+    const res = await axios.post(
+      `http://localhost:8080/api/users/signin`,
+      newUser,
+    )
+    dispatch(loginUser(res.data))
+  } catch (e) {
+    dispatch(loginUserError())
   }
 }
