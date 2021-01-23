@@ -1,9 +1,9 @@
-import { GET_MOVIES, GET_MOVIE, ADD_MOVIE } from './actionTypes'
+import { GET_MOVIES, GET_MOVIE, ADD_MOVIE, ADD_A_USER } from './actionTypes'
 
 const initialState = {
   movies: [],
   movie: {},
-
+  user: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -22,6 +22,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         addMovie: action.payload,
+      }
+      case ADD_A_USER:
+      return {
+        ...state,
+        addUser: action.payload,
       }
     default:
       return state
