@@ -12,48 +12,107 @@ import {
   CheckboxText
 } from './styles'
 
-const SignupComponent = () => {
-  return (
-    <Wrap>
-      <OuterDiv>
-        <FormContainer>
-          <SignupText>Sign Up</SignupText>
-          <StyledContainer>
-            <Form>
-              <Form.Group controlId="formBasicEmail">
-                <FormInput type="email" placeholder="Enter Firstname" />
-              </Form.Group>
-              <Form.Group controlId="formBasicEmail">
-                <FormInput type="email" placeholder="Enter Lastname" />
-              </Form.Group>
-              <Form.Group controlId="formBasicEmail">
-                <FormInput type="email" placeholder="Enter email" />
-              </Form.Group>
+class SignupComponent extends React.Component {
+  state = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  }
 
-              <Form.Group controlId="formBasicPassword">
-                <FormInput type="password" placeholder="Password" />
-              </Form.Group>
-              <Form.Group controlId="formBasicPassword">
-                <FormInput type="password" placeholder="Confirm Password" />
-              </Form.Group>
-              <Form.Group controlId="formBasicCheckbox">
-                <CheckboxText
-                  type="checkbox"
-                  label="I agree to the terms and conditions."
-                />
-              </Form.Group>
-              <Button variant="light" type="submit" block>
-                Submit
-              </Button>
-            </Form>
-          </StyledContainer>
-          <BottomText>
-            Already have an account? <Link to="login"> Login here.</Link>
-          </BottomText>
-        </FormContainer>
-      </OuterDiv>
-    </Wrap>
-  )
+  handleInputChange = (event) => {
+    const { name, value } = event.target
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleSubmit = () => {
+    const { addUser } = this.props
+    const { firstName, lastName, email, password } = this.state
+    const newUser = { firstName, lastName, email, password }
+    addUser(newUser)
+  }
+
+  render() {
+    const { firstName, lastName, email, password } = this.state
+    return (
+      <Wrap>
+        <OuterDiv>
+          <FormContainer>
+            <SignupText>Sign Up</SignupText>
+            <StyledContainer>
+              <Form>
+                <Form.Group controlId="formBasicEmail">
+                  <FormInput
+                    type="email"
+                    placeholder="Enter Firstname"
+                    name="firstName"
+                    value={firstName}
+                    onChange={this.handleInputChange}
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                  <FormInput
+                    type="email"
+                    placeholder="Enter Lastname"
+                    name="lastName"
+                    value={lastName}
+                    onChange={this.handleInputChange}
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                  <FormInput
+                    type="email"
+                    placeholder="Enter email"
+                    name="email"
+                    value={email}
+                    onChange={this.handleInputChange}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="formBasicPassword">
+                  <FormInput
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    value={password}
+                    onChange={this.handleInputChange}
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                  <FormInput
+                    type="password"
+                    placeholder="Confirm Password"
+                    name="password"
+                    value={password}
+                    onChange={this.handleInputChange}
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBasicCheckbox">
+                  <CheckboxText
+                    type="checkbox"
+                    label="I agree to the terms and conditions."
+                  />
+                </Form.Group>
+                <Button
+                  variant="light"
+                  type="submit"
+                  block
+                  onClick={this.handleSubmit}
+                >
+                  Submit
+                </Button>
+              </Form>
+            </StyledContainer>
+            <BottomText>
+              Already have an account? <Link to="login"> Login here.</Link>
+            </BottomText>
+          </FormContainer>
+        </OuterDiv>
+      </Wrap>
+    )
+  }
 }
 
 export default SignupComponent

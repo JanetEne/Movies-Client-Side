@@ -8,12 +8,14 @@ import {
   deleteMovie,
   deleteMovieError,
   editMovie,
-  editMovieError
+  editMovieError,
+  addUser,
+  addUserError
 } from './actionTypes'
 import axios from 'axios'
 
 const apiUrl = "http://localhost:8080/api/v1" //process.env.REACT_APP_API_URL
-console.log(apiUrl)
+
 
 export const fetchMovies = () => async (dispatch) => {
   try {
@@ -84,3 +86,16 @@ export const updateMovie = (details,id) => async (dispatch) => {
     dispatch(editMovieError())
   }
 }
+
+export const postUser = (newUser) => async (dispatch) => {
+  try {
+    const res = await axios.post(
+      `http://localhost:8080/api/users/signup`,
+      newUser,
+    )
+    dispatch(addUser(res.data))
+  } catch (e) {
+    dispatch(addUserError())
+  }
+}
+
