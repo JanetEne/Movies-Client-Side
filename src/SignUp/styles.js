@@ -40,7 +40,7 @@ export const BottomText = styled.div`
   color: white;
   font-size: 14px;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 12px;
 `
 export const FormInput = styled(FormControl)`
   background: transparent;
@@ -52,5 +52,12 @@ export const FormInput = styled(FormControl)`
 `
 
 export const CheckboxText = styled(FormCheck)`
-  color: white
+  color: white;
+`
+
+export const ErrorMessage = styled.div`
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 8px;
 `

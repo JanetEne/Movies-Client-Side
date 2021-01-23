@@ -8,8 +8,8 @@ export const DELETE_MOVIE = 'DELETE_MOVIE'
 export const DELETE_MOVIE_ERROR = 'DELETE_MOVIE_ERROR'
 export const EDIT_MOVIE = 'EDIT_MOVIE'
 export const EDIT_MOVIE_ERROR = 'EDIT_MOVIE_ERROR'
-export const ADD_A_USER = 'ADD_A_MOVIE'
-export const ADD_A_USER_ERROR = 'ADD_A_MOVIE_ERROR'
+export const ADD_A_USER = 'ADD_A_USER'
+export const ADD_A_USER_ERROR = 'ADD_A_USER_ERROR'
 
 
 export const getMovies = (payload) => ({

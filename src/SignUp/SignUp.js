@@ -9,7 +9,8 @@ import {
   StyledContainer,
   BottomText,
   FormInput,
-  CheckboxText
+  CheckboxText,
+  ErrorMessage
 } from './styles'
 
 class SignupComponent extends React.Component {
@@ -17,7 +18,9 @@ class SignupComponent extends React.Component {
     firstName: '',
     lastName: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: '',
+    checkPassword: ''
   }
 
   handleInputChange = (event) => {
@@ -27,15 +30,21 @@ class SignupComponent extends React.Component {
     })
   }
 
+  handleCheckPassword = () => {
+    const { password, confirmPassword } = this.state
+    this.setState({ checkPassword: password !== confirmPassword })
+  }
+
   handleSubmit = () => {
     const { addUser } = this.props
-    const { firstName, lastName, email, password } = this.state
-    const newUser = { firstName, lastName, email, password }
+    const { firstName, lastName, email, password, confirmPassword } = this.state
+    const newUser = { firstName, lastName, email, password, confirmPassword }
+    this.handleCheckPassword()
     addUser(newUser)
   }
 
   render() {
-    const { firstName, lastName, email, password } = this.state
+    const { firstName, lastName, email, password, confirmPassword, checkPassword } = this.state
     return (
       <Wrap>
         <OuterDiv>
@@ -70,7 +79,6 @@ class SignupComponent extends React.Component {
                     onChange={this.handleInputChange}
                   />
                 </Form.Group>
-
                 <Form.Group controlId="formBasicPassword">
                   <FormInput
                     type="password"
@@ -84,11 +92,12 @@ class SignupComponent extends React.Component {
                   <FormInput
                     type="password"
                     placeholder="Confirm Password"
-                    name="password"
-                    value={password}
+                    name="confirmPassword"
+                    value={confirmPassword}
                     onChange={this.handleInputChange}
                   />
                 </Form.Group>
+                {checkPassword && <ErrorMessage>Passwords do not match!</ErrorMessage>}
                 <Form.Group controlId="formBasicCheckbox">
                   <CheckboxText
                     type="checkbox"
