@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Welcome from '../Welcome'
-import SignIn from '../SignIn/Signin'
+import SignIn from '../SignIn'
 import SignUp from '../SignUp'
 import Movies from '../Movies'
 import AddMovie from '../Movies/AddMovie'

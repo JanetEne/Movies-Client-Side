@@ -35,7 +35,8 @@ class SignupComponent extends React.Component {
     this.setState({ checkPassword: password !== confirmPassword })
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault()
     const { addUser } = this.props
     const { firstName, lastName, email, password, confirmPassword } = this.state
     const newUser = { firstName, lastName, email, password, confirmPassword }
