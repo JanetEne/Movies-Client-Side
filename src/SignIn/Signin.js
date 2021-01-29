@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import {
   Wrap,
   LoginText,
@@ -28,10 +28,10 @@ class SignInComponent extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { loginUser } = this.props
+    const { loginUser, history } = this.props
     const { email, password } = this.state
     const user = { email, password }
-    loginUser(user)
+    loginUser(user, history)
   }
 
   render() {
@@ -85,4 +85,4 @@ class SignInComponent extends React.Component {
   }
 }
 
-export default SignInComponent
+export default withRouter(SignInComponent)
