@@ -6,6 +6,7 @@ import SignUp from '../SignUp'
 import Movies from '../Movies'
 import AddMovie from '../Movies/AddMovie'
 import Movie from '../Movies/Movie'
+import PrivateRoute from './privateRoute'
 
 const Routes = () => {
   return (
@@ -22,8 +23,8 @@ const Routes = () => {
       <Route path="/movies" exact>
         <Movies />
       </Route>
-      <Route path="/movie/add" component={AddMovie} />
-      <Route path="/movie/:id/edit" component={AddMovie} />
+      <PrivateRoute path="/movie/add" component={AddMovie} />
+      <PrivateRoute path="/movie/:id/edit" component={AddMovie} />
       <Route path="/movies/:id" component={Movie} />
     </Switch>
   )

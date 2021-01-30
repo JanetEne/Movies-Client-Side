@@ -1,7 +1,8 @@
 import { ADD_A_USER, LOGIN_A_USER } from './actionTypes'
 
 const initialState = {
-  token: ''
+  token: '',
+  isAuth: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -14,7 +15,8 @@ const reducer = (state = initialState, action) => {
     case LOGIN_A_USER:
       return {
         ...state,
-        token: action.payload
+        token: action.payload,
+        isAuth: true
       }
     default:
       return state

@@ -4,7 +4,7 @@ import LoginUser from './Signin'
 
 
 const mapDispatchToProps = (dispatch) => ({
-  loginUser: (user) => dispatch(loginAUser(user))
+  loginUser: (user, history) => dispatch(loginAUser(user, history))
 })
 
 export default connect(null, mapDispatchToProps)(LoginUser)
