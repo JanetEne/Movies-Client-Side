@@ -1,7 +1,17 @@
 import { createStore, applyMiddleware } from 'redux'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import reducer from './reducers'
+
+const persistConfig = {
+  key: 'auth',
+  storage: storage,
+  whitelist: ['auth']
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
 
 const middlewares = []
 
@@ -13,8 +23,10 @@ if (process.env.NODE_ENV === `development`) {
 }
 
 const store = createStore(
-  reducer,
+  persistedReducer,
   /* preloadedState, */ composeWithDevTools(applyMiddleware(...middlewares))
 )
 
-export default store
+const persistor = persistStore(store)
+
+export { store, persistor }
