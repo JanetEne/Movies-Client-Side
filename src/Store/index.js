@@ -1,13 +1,13 @@
 import { createStore, applyMiddleware } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import localForage from 'localforage';
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import reducer from './reducers'
 
 const persistConfig = {
   key: 'auth',
-  storage: storage,
+  storage: localForage,
   whitelist: ['auth']
 }
 
