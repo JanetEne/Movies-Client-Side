@@ -37,11 +37,11 @@ class SignupComponent extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { addUser, history } = this.props
+    const { signUp, history } = this.props
     const { firstName, lastName, email, password, confirmPassword } = this.state
     const newUser = { firstName, lastName, email, password, confirmPassword }
     this.handleCheckPassword()
-    addUser(newUser, history)
+    signUp(newUser, history)
   }
 
   render() {

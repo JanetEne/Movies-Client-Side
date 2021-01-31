@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { loginAUser } from '../store/auth/actions'
+import { loginAUser } from '../../store/auth/actions'
 import LoginUser from './Signin'
 
 

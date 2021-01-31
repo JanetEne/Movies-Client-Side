@@ -1,13 +1,21 @@
-import { addUser, addUserError, loginUser, loginUserError } from './actionTypes'
+import {
+  addUser,
+  addUserError,
+  loginUser,
+  loginUserError,
+  logoutUser,
+  logoutUserError
+} from './actionTypes'
 import axios from 'axios'
+import localForage from 'localforage'
 
 const apiUrl = 'http://localhost:8080/api/users'
 
-export const postUser = (newUser, history) => async (dispatch) => {
+export const signUp = (newUser, history) => async (dispatch) => {
   try {
     const res = await axios.post(`${apiUrl}/signup`, newUser)
     dispatch(addUser(res.data))
-    history ? history.push('/login') : window.location.reload()
+    history.push('/login')
   } catch (e) {
     dispatch(addUserError())
   }
@@ -15,13 +23,20 @@ export const postUser = (newUser, history) => async (dispatch) => {
 
 export const loginAUser = (user, history) => async (dispatch) => {
   try {
-    const res = await axios.post(
-      `${apiUrl}/signin`,
-      user,
-    )
+    const res = await axios.post(`${apiUrl}/signin`, user)
     dispatch(loginUser(res.data))
-    history ? history.push('/movies') : window.location.reload()
+    history.push('/movies')
   } catch (e) {
     dispatch(loginUserError())
+  }
+}
+
+export const logout = (history) => async (dispatch) => {
+  try {
+    localForage.clear()
+    dispatch(logoutUser())
+    history.push('/movies')
+  } catch (e) {
+    dispatch(logoutUserError())
   }
 }

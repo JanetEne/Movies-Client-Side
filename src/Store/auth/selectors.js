@@ -1,4 +1,1 @@
-export const getIsAuth = (state) => {
-    const authentication = state.auth.token
-    return authentication
-} 
+export const getIsAuth = (state) => state.auth.isAuth

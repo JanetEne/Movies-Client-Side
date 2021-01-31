@@ -1,23 +1,20 @@
-import { ADD_A_USER, LOGIN_A_USER } from './actionTypes'
+import { ADD_A_USER, LOGIN, LOGOUT } from './actionTypes'
 
 const initialState = {
-  token: '',
   isAuth: false
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_A_USER:
+    case LOGIN:
       return {
         ...state,
-        token: action.payload
+        isAuth: true,
+        ...action.payload
       }
-    case LOGIN_A_USER:
-      return {
-        ...state,
-        token: action.payload,
-        isAuth: true
-      }
+    case LOGOUT:
+      return initialState
     default:
       return state
   }
