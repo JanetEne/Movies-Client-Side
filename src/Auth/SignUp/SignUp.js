@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 import {
   FormContainer,
   Wrap,
@@ -46,6 +46,8 @@ class SignupComponent extends React.Component {
 
   render() {
     const { firstName, lastName, email, password, confirmPassword, checkPassword } = this.state
+    const { isAuth } = this.props
+    if (isAuth) return <Redirect to="/movies" />
     return (
       <Wrap>
         <OuterDiv>

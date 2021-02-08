@@ -33,17 +33,17 @@ export const fetchMovie = (id) => async (dispatch) => {
   }
 }
 
-export const postMovie = (newMovie, history) => async (dispatch) => {
+export const postMovie = (newMovie, history) => async (dispatch, getState) => {
   try {
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJ2YW5lc3NhIiwibGFzdE5hbWUiOiJPZ2VueWkiLCJlbWFpbCI6InZhbmVAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTYxMDQ4MjIyOX0.M9MqrGBuY9Rk8yMk3qK7_dgXosvjoih9jOAb_rzyF7U'
-    const header = {
+    const state = getState() 
+    const token = state.auth.token
+    const headers = {
       Authorization: `Bearer ${token}`
     }
     const res = await axios.post(
       `${apiUrl}/movies`,
       newMovie,
-      header
+      {headers}
     )
     dispatch(addMovie(res.data))
     history ? history.push(`/movies/${res.data.id}`) : window.location.reload()
@@ -52,14 +52,14 @@ export const postMovie = (newMovie, history) => async (dispatch) => {
   }
 }
 
-export const removeMovie = (id, history) => async (dispatch) => {
+export const removeMovie = (id, history) => async (dispatch, getState) => {
   try {
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJ2YW5lc3NhIiwibGFzdE5hbWUiOiJPZ2VueWkiLCJlbWFpbCI6InZhbmVAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTYxMDQ4MjIyOX0.M9MqrGBuY9Rk8yMk3qK7_dgXosvjoih9jOAb_rzyF7U'
+    const state = getState() 
+    const token = state.auth.token
     const header = {
-      Authorization: `Bearer ${token}`
+      authorization: `Bearer ${token}`
     }
-    const res = await axios.delete(`${apiUrl}/movies/${id}`, header)
+    const res = await axios.delete(`${apiUrl}/movies/${id}`, {header})
     dispatch(deleteMovie())
     history ? history.push('/movies') : window.location.reload()
   } catch (e) {
@@ -67,12 +67,12 @@ export const removeMovie = (id, history) => async (dispatch) => {
   }
 }
 
-export const updateMovie = (details,id) => async (dispatch) => {
+export const updateMovie = (details,id) => async (dispatch, getState) => {
   try {
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJ2YW5lc3NhIiwibGFzdE5hbWUiOiJPZ2VueWkiLCJlbWFpbCI6InZhbmVAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTYxMDQ4MjIyOX0.M9MqrGBuY9Rk8yMk3qK7_dgXosvjoih9jOAb_rzyF7U'
+    const state = getState() 
+    const token = state.auth.token
     const header = {
-      Authorization: `Bearer ${token}`
+      authorization: `Bearer ${token}`
     }
     const res = await axios.put(
       `${apiUrl}/movies/${id}`,
