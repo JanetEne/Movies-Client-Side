@@ -15,7 +15,7 @@ export const signUp = (newUser, history) => async (dispatch) => {
   try {
     const res = await axios.post(`${apiUrl}/signup`, newUser)
     dispatch(addUser(res.data))
-    history.push('/login')
+    history.push('/movies')
   } catch (e) {
     dispatch(addUserError())
   }

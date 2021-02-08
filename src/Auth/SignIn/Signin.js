@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 import {
   Wrap,
   LoginText,
@@ -13,7 +13,6 @@ import {
 } from './styles'
 
 class SignInComponent extends React.Component {
-
   state = {
     email: '',
     password: ''
@@ -36,6 +35,8 @@ class SignInComponent extends React.Component {
 
   render() {
     const { email, password } = this.state
+    const { isAuth } = this.props
+    if (isAuth) return <Redirect to="/movies" />
     return (
       <Wrap>
         <OuterDiv>
