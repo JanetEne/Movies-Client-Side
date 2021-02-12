@@ -23,7 +23,6 @@ import {
   StyledHeart,
   Likes
 } from './styles'
-import ButtonComponent from '../../Common/Buttons'
 
 class SingleMovie extends React.Component {
   componentDidMount() {

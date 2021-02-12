@@ -56,10 +56,10 @@ export const removeMovie = (id, history) => async (dispatch, getState) => {
   try {
     const state = getState() 
     const token = state.auth.token
-    const header = {
+    const headers = {
       authorization: `Bearer ${token}`
     }
-    const res = await axios.delete(`${apiUrl}/movies/${id}`, {header})
+    const res = await axios.delete(`${apiUrl}/movies/${id}`, {headers})
     dispatch(deleteMovie())
     history ? history.push('/movies') : window.location.reload()
   } catch (e) {
@@ -71,13 +71,13 @@ export const updateMovie = (details,id) => async (dispatch, getState) => {
   try {
     const state = getState() 
     const token = state.auth.token
-    const header = {
+    const headers = {
       authorization: `Bearer ${token}`
     }
     const res = await axios.put(
       `${apiUrl}/movies/${id}`,
       details,
-      header
+      {headers}
     )
     dispatch(editMovie(res.data))
   } catch (e) {
