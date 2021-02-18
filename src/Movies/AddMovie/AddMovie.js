@@ -43,7 +43,7 @@ class AddMovieComponent extends React.Component {
   }
 
   fetchMovie = () => {
-    if (!this.props.movie.id && this.checkIsEdit(this.props.match.url)) {
+    if (this.checkIsEdit(this.props.match.url)) {
       const {
         getMovie,
         match: {

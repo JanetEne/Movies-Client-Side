@@ -1,12 +1,19 @@
 import React from 'react'
 import MoviesCard from '../Common/MoviesCard/MoviesCard'
 import { Row } from 'react-bootstrap'
-import { StyledContainer, Wrap } from './style'
+import { StyledContainer, Wrap } from './styles'
 
-class Movies extends React.Component {
+class UsersMovies extends React.Component {
   componentDidMount() {
     this.props.fetchMovies()
   }
+
+  handleDelete = (id) => {
+    const {
+      deleteMovie
+    } = this.props
+    deleteMovie(id)
+}
 
   render() {
     const { movies } = this.props
@@ -18,7 +25,7 @@ class Movies extends React.Component {
         <StyledContainer>
           <Row>
             {movies.map((movie, index) => (
-                <MoviesCard movie={movie} key={index}/>
+              <MoviesCard movie={movie} key={index} handleDelete={this.handleDelete}/>
             ))}
           </Row>
         </StyledContainer>
@@ -27,4 +34,4 @@ class Movies extends React.Component {
   }
 }
 
-export default Movies
+export default UsersMovies
