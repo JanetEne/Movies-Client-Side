@@ -9,13 +9,17 @@ import {
   StyledContainer,
   FormInput,
   DontHaveAccount,
-  CheckboxText
+  CheckboxText,
+  StyledFormContainer,
+  Icon
 } from './styles'
+import { faEye } from "@fortawesome/free-solid-svg-icons"
 
 class SignInComponent extends React.Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    showPassword: false,
   }
 
   handleInputChange = (event) => {
@@ -33,8 +37,14 @@ class SignInComponent extends React.Component {
     loginUser(user, history)
   }
 
+  togglePasswordVisiblity = () => {
+    const {showPassword} = this.state
+    this.setState({showPassword: !showPassword});
+  }
+
   render() {
-    const { email, password } = this.state
+    const eye = <Icon icon={faEye} />
+    const { email, password, showPassword } = this.state
     const { isAuth } = this.props
     if (isAuth) return <Redirect to="/movies" />
     return (
@@ -54,15 +64,16 @@ class SignInComponent extends React.Component {
                   />
                 </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
+                <StyledFormContainer controlId="formBasicPassword">
                   <FormInput
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     placeholder="Password"
                     name="password"
                     value={password}
                     onChange={this.handleInputChange}
                   />
-                </Form.Group>
+                  <i onClick={this.togglePasswordVisiblity}>{eye}</i>
+                </StyledFormContainer>
                 <Form.Group controlId="formBasicCheckbox">
                   <CheckboxText type="checkbox" label="Remember Me" />
                 </Form.Group>

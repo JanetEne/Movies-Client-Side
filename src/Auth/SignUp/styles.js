@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { Container, FormControl, FormCheck } from 'react-bootstrap'
+import { Container, FormControl, FormCheck, FormGroup } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Wrap = styled.div`
   width: 100%;
@@ -60,4 +61,21 @@ export const ErrorMessage = styled.div`
   font-size: 14px;
   text-align: center;
   margin-bottom: 8px;
+`
+
+export const StyledFormContainer = styled(FormGroup)`
+  position: relative;
+  display: flex;
+  margin-bottom: 14px;
+`
+
+export const Icon = styled(FontAwesomeIcon)`
+  position: absolute;
+  top: 34%;
+  right: 5%;
+
+  &:hover {
+    color: mediumorchid;
+    cursor: pointer;
+  }
 `

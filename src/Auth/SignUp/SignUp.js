@@ -10,8 +10,10 @@ import {
   BottomText,
   FormInput,
   CheckboxText,
-  ErrorMessage
+  ErrorMessage,StyledFormContainer,
+  Icon
 } from './styles'
+import { faEye } from "@fortawesome/free-solid-svg-icons"
 
 class SignupComponent extends React.Component {
   state = {
@@ -20,7 +22,8 @@ class SignupComponent extends React.Component {
     email: '',
     password: '',
     confirmPassword: '',
-    checkPassword: ''
+    checkPassword: '',
+    showPassword: false
   }
 
   handleInputChange = (event) => {
@@ -44,8 +47,14 @@ class SignupComponent extends React.Component {
     signUp(newUser, history)
   }
 
+  togglePasswordVisiblity = () => {
+    const {showPassword} = this.state
+    this.setState({showPassword: !showPassword});
+  }
+
   render() {
-    const { firstName, lastName, email, password, confirmPassword, checkPassword } = this.state
+    const eye = <Icon icon={faEye} />
+    const { firstName, lastName, email, password, confirmPassword, checkPassword, showPassword } = this.state
     const { isAuth } = this.props
     if (isAuth) return <Redirect to="/movies" />
     return (
@@ -82,24 +91,26 @@ class SignupComponent extends React.Component {
                     onChange={this.handleInputChange}
                   />
                 </Form.Group>
-                <Form.Group controlId="formBasicPassword">
+                <StyledFormContainer controlId="formBasicPassword">
                   <FormInput
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     placeholder="Password"
                     name="password"
                     value={password}
                     onChange={this.handleInputChange}
                   />
-                </Form.Group>
-                <Form.Group controlId="formBasicPassword">
+                  <i onClick={this.togglePasswordVisiblity}>{eye}</i>
+                </StyledFormContainer>
+                <StyledFormContainer controlId="formBasicPassword">
                   <FormInput
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     placeholder="Confirm Password"
                     name="confirmPassword"
                     value={confirmPassword}
                     onChange={this.handleInputChange}
                   />
-                </Form.Group>
+                  <i onClick={this.togglePasswordVisiblity}>{eye}</i>
+                </StyledFormContainer>
                 {checkPassword && <ErrorMessage>Passwords do not match!</ErrorMessage>}
                 <Form.Group controlId="formBasicCheckbox">
                   <CheckboxText
