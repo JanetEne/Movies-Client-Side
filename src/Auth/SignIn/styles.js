@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import styled from '@emotion/styled'
-import { Container, FormControl, FormCheck } from 'react-bootstrap'
+import { Container, FormControl, FormCheck, FormGroup } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Wrap = styled.div`
   width: 100%;
@@ -51,8 +52,25 @@ export const DontHaveAccount = styled.div`
   font-size: 14px;
   text-align: center;
   margin-top: 50px;
-`;
+`
 
 export const CheckboxText = styled(FormCheck)`
-  color: white
+  color: white;
+`
+
+export const StyledFormContainer = styled(FormGroup)`
+  position: relative;
+  display: flex;
+  margin-bottom: 14px;
+`
+
+export const Icon = styled(FontAwesomeIcon)`
+  position: absolute;
+  top: 34%;
+  right: 5%;
+
+  &:hover {
+    color: mediumorchid;
+    cursor: pointer;
+  }
 `
