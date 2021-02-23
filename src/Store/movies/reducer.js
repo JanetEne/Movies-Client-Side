@@ -1,4 +1,4 @@
-import { GET_MOVIES, GET_MOVIE, ADD_MOVIE } from './actionTypes'
+import { GET_MOVIES, GET_MOVIE, ADD_MOVIE, GET_MY_MOVIES } from './actionTypes'
 
 const initialState = {
   movies: [],
@@ -23,6 +23,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         addMovie: action.payload
       }
+      case GET_MY_MOVIES:
+        return {
+          ...state,
+          myMovies: action.payload
+        }
     default:
       return state
   }

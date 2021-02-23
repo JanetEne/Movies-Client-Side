@@ -25,7 +25,7 @@ class MyMovies extends React.Component {
         <StyledContainer>
           <Row>
             {movies.map((movie, index) => (
-              <MoviesCard movie={movie} key={index} handleDelete={this.handleDelete}/>
+              <MoviesCard movie={movie} key={index} handleDelete={this.handleDelete} showIcons={true}/>
             ))}
           </Row>
         </StyledContainer>

@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
 import MyMovies from './MyMovies'
-import { fetchUsersMovies } from '../../store/userMovies/actions'
-import {removeMovie} from '../../store/movies/actions'
+import { fetchMyMovies } from '../../store/movies/actions'
+import { removeMovie } from '../../store/movies/actions'
 
 const mapStateToProps = (state) => ({
-  movies: state.usersMovies.movies
+  movies: state.movies.myMovies
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchMovies: () => dispatch(fetchUsersMovies()),
+  fetchMovies: () => dispatch(fetchMyMovies()),
   deleteMovie: (id, history) => dispatch(removeMovie(id, history))
 })
 
