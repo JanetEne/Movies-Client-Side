@@ -8,7 +8,7 @@ import Movies from '../Movies'
 import AddMovie from '../Movies/AddMovie'
 import Movie from '../Movies/Movie'
 import PrivateRoute from './privateRoute'
-import UsersMovies from '../UsersMovies'
+import MyMovies from '../Movies/MyMovies'
 
 const Routes = () => {
   return (
@@ -28,8 +28,8 @@ const Routes = () => {
       <Route path="/movies" exact>
         <Movies />
       </Route>
-      <Route path="/users/movies" exact>
-        <UsersMovies />
+      <Route path="/my-movies" exact>
+        <MyMovies />
       </Route>
       <PrivateRoute path="/movie/add" component={AddMovie} />
       <PrivateRoute path="/movie/:id/edit" component={AddMovie} />

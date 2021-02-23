@@ -3,7 +3,7 @@ import { GET_MOVIES, GET_MOVIE, ADD_MOVIE } from './actionTypes'
 const initialState = {
   movies: [],
   movie: {},
-  user: {}
+  myMovies: []
 }
 
 const reducer = (state = initialState, action) => {
