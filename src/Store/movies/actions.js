@@ -8,12 +8,13 @@ import {
   deleteMovie,
   deleteMovieError,
   editMovie,
-  editMovieError
+  editMovieError,
+  getMyMovies,
+  getMyMoviesError
 } from './actionTypes'
 import axios from 'axios'
 
-const apiUrl = "http://localhost:8080/api/v1" //process.env.REACT_APP_API_URL
-
+const apiUrl = 'http://localhost:8080/api/v1' //process.env.REACT_APP_API_URL
 
 export const fetchMovies = () => async (dispatch) => {
   try {
@@ -35,16 +36,12 @@ export const fetchMovie = (id) => async (dispatch) => {
 
 export const postMovie = (newMovie, history) => async (dispatch, getState) => {
   try {
-    const state = getState() 
+    const state = getState()
     const token = state.auth.token
     const headers = {
       Authorization: `Bearer ${token}`
     }
-    const res = await axios.post(
-      `${apiUrl}/movies`,
-      newMovie,
-      {headers}
-    )
+    const res = await axios.post(`${apiUrl}/movies`, newMovie, { headers })
     dispatch(addMovie(res.data))
     history ? history.push(`/movies/${res.data.id}`) : window.location.reload()
   } catch (e) {
@@ -54,12 +51,12 @@ export const postMovie = (newMovie, history) => async (dispatch, getState) => {
 
 export const removeMovie = (id, history) => async (dispatch, getState) => {
   try {
-    const state = getState() 
+    const state = getState()
     const token = state.auth.token
     const headers = {
       authorization: `Bearer ${token}`
     }
-    const res = await axios.delete(`${apiUrl}/movies/${id}`, {headers})
+    const res = await axios.delete(`${apiUrl}/movies/${id}`, { headers })
     dispatch(deleteMovie())
     history ? history.push('/movies') : window.location.reload()
   } catch (e) {
@@ -67,21 +64,30 @@ export const removeMovie = (id, history) => async (dispatch, getState) => {
   }
 }
 
-export const updateMovie = (details,id) => async (dispatch, getState) => {
+export const updateMovie = (details, id) => async (dispatch, getState) => {
   try {
-    const state = getState() 
+    const state = getState()
     const token = state.auth.token
     const headers = {
       authorization: `Bearer ${token}`
     }
-    const res = await axios.put(
-      `${apiUrl}/movies/${id}`,
-      details,
-      {headers}
-    )
+    const res = await axios.put(`${apiUrl}/movies/${id}`, details, { headers })
     dispatch(editMovie(res.data))
   } catch (e) {
     dispatch(editMovieError())
   }
 }
 
+export const fetchMyMovies = () => async (dispatch, getState) => {
+  try {
+    const state = getState()
+    const token = state.auth.token
+    const headers = {
+      authorization: `Bearer ${token}`
+    }
+    const res = await axios.get(`${apiUrl}/movies/user`, { headers })
+    dispatch(getMyMovies(res.data))
+  } catch (e) {
+    dispatch(getMyMoviesError())
+  }
+}

@@ -1,14 +1,16 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 import {
   ImageContainer,
   InnerImageWrap,
   StyledImage,
-  Container
+  Container,
+  IconContainer,
+  StyledIcon
 } from './styles'
 
-const MovieCard = ({ movie, handleDelete }) => {
+const MovieCard = ({ movie, handleDelete, showIcons }) => {
   const { img, id } = movie
 
   return (
@@ -18,26 +20,21 @@ const MovieCard = ({ movie, handleDelete }) => {
           <ImageContainer>
             <InnerImageWrap>
               <StyledImage src={img} alt="picture display" />
-            </InnerImageWrap>
-          </ImageContainer>
+              {showIcons && (
+                <IconContainer>
+                  <StyledIcon
+                    icon={faTrashAlt}
+                    onClick={() => handleDelete(id)}
+                  />
+                  <Link to={`/movie/${movie.id}/edit`}>
+                    <StyledIcon icon={faEdit} />
+                  </Link>
+                </IconContainer>
+              )}
+          </InnerImageWrap>
+        </ImageContainer>
         </Link>
       </Container>
-      <Button
-        variant="secondary"
-        style={{
-          width: '30%',
-          marginTop: '50px',
-          marginBottom: '50px',
-        }}
-        onClick={() => handleDelete(id)}
-      >
-        Delete
-      </Button>
-      <Link to={`/movie/${movie.id}/edit`}>
-        <Button variant="light" style={{ width: '30%', marginLeft: '20px' }}>
-          Edit
-        </Button>
-      </Link>
     </div>
   )
 }

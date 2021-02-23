@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Container = styled.div`
   width: 300px;
@@ -40,38 +41,13 @@ export const StyledImage = styled.img`
   height: 400px;
 `
 
-export const TitleContainer = styled.div`
+export const IconContainer = styled.div`
   position: absolute;
-  z-index: 30;
-  top: 54%;
-  bottom: auto;
-  transform: translateY(-50%);
-  width: 50%;
-  max-width: 300px;
-  text-align: center;
-  margin: 0 auto;
-  color: #ddd;
-  padding: 5px;
-  transition: 1s max-height ease-out, 0.4s 0.1s bottom ease-out;
+  top: 30px;
+  right: 30px;
 `
 
-export const Title = styled.h6`
-  position: relative;
-  display: inline-block;
-  font-weight: bold;
-  font-size: 1.2em;
-  line-height: 1.5;
-  margin: 0;
-`
-
-export const DescriptionContainer = styled.h4`
-  top: -30px;
-  transition: 1s max-height ease-out, 0.6s opacity ease-out, 0.4s top ease-out;
-  position: relative;
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  line-height: 0.3;
-  opacity: 0.7;
-  margin: 3px 0;
+export const StyledIcon = styled(FontAwesomeIcon)`
+  color: white;
+  margin-left: 5px;
 `
