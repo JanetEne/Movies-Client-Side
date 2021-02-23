@@ -13,18 +13,23 @@ import { Form, Button } from 'react-bootstrap'
 
 class AddMovieComponent extends React.Component {
   state = {
-    title: this.props.movie.title,
-    writers: this.props.movie.writers,
-    plot: this.props.movie.plot,
-    cast: this.props.movie.cast,
-    year: this.props.movie.year,
-    genres: this.props.movie.genres,
-    img: this.props.movie.img,
-    id: this.props.movie.id
+    title: '',
+    writers: '',
+    plot: '',
+    cast: '',
+    year: '',
+    genres: '',
+    img: '',
+    id: ''
   }
 
   componentDidMount() {
-    this.fetchMovie()
+    if (this.checkIsEdit(this.props.match.url)) {
+      this.fetchMovie()
+    }
+    if (this.props.movie.id && this.checkIsAddNew(this.props.match.url)) {
+      this.resetState()
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -40,10 +45,12 @@ class AddMovieComponent extends React.Component {
         id: this.props.movie.id
       })
     }
+    if (this.checkIsAddNew(this.props.match.url) !== this.checkIsAddNew(prevProps.match.url)) {
+      this.resetState()
+    }
   }
 
   fetchMovie = () => {
-    if (this.checkIsEdit(this.props.match.url)) {
       const {
         getMovie,
         match: {
@@ -51,11 +58,27 @@ class AddMovieComponent extends React.Component {
         }
       } = this.props
       getMovie(id)
-    }
   }
 
   checkIsEdit = (url) => {
     return url.split('/').includes('edit')
+  }
+
+  checkIsAddNew = (url) => {
+    return url.split('/').includes('add')
+  }
+
+  resetState = () => {
+    this.setState({
+      title: '',
+      writers: '',
+      plot: '',
+      cast: '',
+      year: '',
+      genres: '',
+      img: '',
+      id: ''
+    })
   }
 
   handleInputChange = (event) => {

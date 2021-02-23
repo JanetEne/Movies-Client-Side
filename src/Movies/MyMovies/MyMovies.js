@@ -1,9 +1,9 @@
 import React from 'react'
-import MoviesCard from '../Common/MoviesCard/MoviesCard'
+import MoviesCard from '../../Common/MoviesCard/MoviesCard'
 import { Row } from 'react-bootstrap'
 import { StyledContainer, Wrap } from './styles'
 
-class UsersMovies extends React.Component {
+class MyMovies extends React.Component {
   componentDidMount() {
     this.props.fetchMovies()
   }
@@ -34,4 +34,4 @@ class UsersMovies extends React.Component {
   }
 }
 
-export default UsersMovies
+export default MyMovies
