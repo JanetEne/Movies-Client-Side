@@ -1,3 +1,5 @@
+import axios from 'axios'
+import {showAlert, hideAlert} from '../alert/actionTypes'
 import {
   getMovies,
   getMoviesError,
@@ -12,7 +14,6 @@ import {
   getMyMovies,
   getMyMoviesError
 } from './actionTypes'
-import axios from 'axios'
 
 const apiUrl = 'http://localhost:8080/api/v1' //process.env.REACT_APP_API_URL
 
@@ -43,6 +44,7 @@ export const postMovie = (newMovie, history) => async (dispatch, getState) => {
     }
     const res = await axios.post(`${apiUrl}/movies`, newMovie, { headers })
     dispatch(addMovie(res.data))
+    dispatch(showAlert('Success!', 'success', 'movie added'))
     history ? history.push(`/movies/${res.data.id}`) : window.location.reload()
   } catch (e) {
     dispatch(addMovieError())
