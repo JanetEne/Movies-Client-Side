@@ -75,6 +75,7 @@ export const updateMovie = (details, id) => async (dispatch, getState) => {
     }
     const res = await axios.put(`${apiUrl}/movies/${id}`, details, { headers })
     dispatch(editMovie(res.data))
+    dispatch(showAlert('Success!', 'success', 'movie edited successfully'))
   } catch (e) {
     dispatch(editMovieError())
   }

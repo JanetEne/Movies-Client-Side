@@ -10,6 +10,11 @@ const SimpleAlert = () => {
   const show = useSelector(getShowAlert)
   const { title, message, variant } = useSelector(getAlertDetails)
 
+  if (show) {
+    setTimeout(() => {
+      dispatch(hideAlert())
+    }, 5000)
+  }
   return (
     <AlertContainer>
       <Alert
