@@ -10,7 +10,10 @@ export const EDIT_MOVIE = 'EDIT_MOVIE'
 export const EDIT_MOVIE_ERROR = 'EDIT_MOVIE_ERROR'
 export const GET_MY_MOVIES = 'GET_MY_MOVIES'
 export const GET_MY_MOVIES_ERROR = 'GET_MY_MOVIES_ERROR'
-
+export const GET_MOVIE_RATINGS = 'GET_MOVIE_RATINGS'
+export const GET_MOVIE_RATINGS_ERROR = 'GET_MOVIE_RATINGS_ERROR'
+export const RATE_MOVIE = 'RATE_MOVIE'
+export const RATE_MOVIE_ERROR = 'RATE_MOVIE_ERROR'
 
 export const getMovies = (payload) => ({
   type: GET_MOVIES,
@@ -63,4 +66,22 @@ export const getMyMovies = (payload) => ({
 
 export const getMyMoviesError = () => ({
   type: GET_MY_MOVIES_ERROR
+})
+
+export const getMovieRatings = (payload) => ({
+  type: GET_MOVIE_RATINGS,
+  payload
+})
+
+export const getMovieRatingsError = () => ({
+  type: GET_MOVIE_RATINGS_ERROR
+})
+
+export const rateMovie = (payload) => ({
+  type: RATE_MOVIE,
+  payload
+})
+
+export const ratingMovieError = () => ({
+  type: RATE_MOVIE_ERROR
 })

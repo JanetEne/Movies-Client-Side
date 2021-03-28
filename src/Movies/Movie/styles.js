@@ -68,8 +68,7 @@ export const StyledIcon = styled(FontAwesomeIcon)`
 `
 
 export const Rating = styled.div`
-  margin-left: 10px;
-  color: white;
+  margin-left: 4px;
   margin-top: -5px;
 `
 
