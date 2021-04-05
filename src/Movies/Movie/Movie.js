@@ -34,6 +34,12 @@ class SingleMovie extends React.Component {
     getMovieRating(id)
   }
 
+  handleRatings = () => {
+    const rateMovie = this.props
+
+    rateMovie()
+  }
+
   handleDelete = () => {
     const {
       deleteMovie,
