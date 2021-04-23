@@ -19,8 +19,7 @@ import {
 } from './actionTypes'
 import { isFetchingStart, isFetchingEnd } from '../isFetching/actions'
 
-const apiUrl = 'http://localhost:8080/api/v1'
-const ratingUrl = 'http://localhost:8080/api/rating' //process.env.REACT_APP_API_URL
+const apiUrl = process.env.REACT_APP_API_URL
 
 export const fetchMovies = () => async (dispatch) => {
   try {
@@ -100,10 +99,12 @@ export const fetchMyMovies = () => async (dispatch, getState) => {
   }
 }
 
-export const fetchMovieRatings = (id) => async (dispatch) => {
+export const fetchMovieRatings = (id) => async (dispatch, getState) => {
+  const state = getState()
+  const userId = state.auth.id
   try {
     dispatch(isFetchingStart('rating'))
-    const res = await axios.get(`${ratingUrl}/${id}`)
+    const res = await axios.get(`${apiUrl}/rating/${id}?${userId ? `userId=${userId}` : ''}`)
     dispatch(getMovieRatings(res.data))
     dispatch(isFetchingEnd('rating'))
   } catch (e) {
@@ -118,8 +119,11 @@ export const rateAMovie = (id, rating) => async (dispatch, getState) => {
     const headers = {
       Authorization: `Bearer ${token}`
     }
-    const res = await axios.post(`${ratingUrl}/${id}`, rating, { headers })
-    dispatch(rateMovie(res.data))
+    const res = await axios.post(`${apiUrl}/rating/${id}`, {rating}, { headers })
+    dispatch(rateMovie(res))
+    setTimeout(() => {
+      dispatch(fetchMovieRatings(id))
+    }, 2000)
   } catch (e) {
     dispatch(ratingMovieError())
   }

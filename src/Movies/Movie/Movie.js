@@ -18,7 +18,9 @@ import {
   IconContainer,
   Rating,
   StyledHeart,
-  Likes
+  Likes,
+  AvgRating,
+  RateThis
 } from './styles'
 
 class SingleMovie extends React.Component {
@@ -34,12 +36,6 @@ class SingleMovie extends React.Component {
     getMovieRating(id)
   }
 
-  handleRatings = () => {
-    const rateMovie = this.props
-
-    rateMovie()
-  }
-
   handleDelete = () => {
     const {
       deleteMovie,
@@ -51,10 +47,27 @@ class SingleMovie extends React.Component {
     deleteMovie(id, history)
   }
 
+  handleRatings = (selectedRating) => {
+    const {
+      rateMovies,
+      match: {
+        params: { id }
+      }
+    } = this.props
+    rateMovies(id, selectedRating)
+  }
+
   render() {
-    const { movie, rating, isFetchingMovie, isFetchingRating } = this.props
+    const {
+      movie,
+      ratingData,
+      isFetchingMovie,
+      isFetchingRating,
+      isAuth
+    } = this.props
     const { title, genres, writers, cast, plot, year, likes, img } = movie
-    if (isFetchingMovie || isFetchingRating) return <Spinner />
+    if (isFetchingMovie) return <Spinner />
+    const { average, count, myRating } = ratingData
     return (
       <Wrap>
         <StyledImage src={img} alt="hello"></StyledImage>
@@ -65,19 +78,27 @@ class SingleMovie extends React.Component {
             <Year>({year})</Year>
           </GenreContainer>
           <IconContainer>
-            <Rating>
-              <ReactStars
-                count={5}
-                size={24}
-                activeColor="#ffd700"
-                isHalf={true}
-                emptyIcon={<i className="far fa-star"></i>}
-                halfIcon={<i className="fa fa-star-half-alt"></i>}
-                fullIcon={<i className="fa fa-star"></i>}
-                value={rating}
-              />
-            </Rating>
+            <RateThis>Rate this: </RateThis>
+            {!isFetchingRating && (
+              <Rating>
+                <ReactStars
+                  count={5}
+                  size={24}
+                  activeColor="#ffd700"
+                  // isHalf={true}
+                  emptyIcon={<i className="far fa-star"></i>}
+                  halfIcon={<i className="fa fa-star-half-alt"></i>}
+                  fullIcon={<i className="fa fa-star"></i>}
+                  value={myRating}
+                  edit={isAuth ? true : false}
+                  onChange={this.handleRatings}
+                />
+              </Rating>
+            )}
           </IconContainer>
+          <AvgRating>
+            {average}/5 ({count} user ratings)
+          </AvgRating>
           <Plot>{plot}</Plot>
           <Writers>Writers : {writers}</Writers>
           <Cast>Cast : {cast}</Cast>

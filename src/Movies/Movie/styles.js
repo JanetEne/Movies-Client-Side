@@ -81,3 +81,17 @@ export const Likes = styled.div`
   color: white;
   margin-top: -5px;
 `
+
+export const RateThis = styled.span`
+ color: white;
+ margin-left: 5px;
+ line-height: 29px;
+ font-weight: bold;
+`
+
+export const AvgRating = styled.div`
+ color: white;
+ margin-left: 5px;
+ line-height: 29px;
+ font-weight: bold;
+`
