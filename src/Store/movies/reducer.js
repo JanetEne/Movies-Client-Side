@@ -4,7 +4,9 @@ import {
   ADD_MOVIE,
   GET_MY_MOVIES,
   GET_MOVIE_RATINGS,
-  RATE_MOVIE
+  RATE_MOVIE,
+  LIKE_MOVIE,
+  GET_MOVIE_LIKES
 } from './actionTypes'
 
 const initialState = {
@@ -13,7 +15,8 @@ const initialState = {
   myMovies: [],
   rating: {
     average: undefined
-  }
+  },
+  likes: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -48,6 +51,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         rateMovie: action.payload
       }
+      case GET_MOVIE_LIKES:
+        return {
+          ...state,
+          likes: action.payload
+        }
+      case LIKE_MOVIE:
+        return {
+          ...state,
+          likeMovie: action.payload
+        }
     default:
       return state
   }

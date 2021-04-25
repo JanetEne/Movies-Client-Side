@@ -14,6 +14,10 @@ export const GET_MOVIE_RATINGS = 'GET_MOVIE_RATINGS'
 export const GET_MOVIE_RATINGS_ERROR = 'GET_MOVIE_RATINGS_ERROR'
 export const RATE_MOVIE = 'RATE_MOVIE'
 export const RATE_MOVIE_ERROR = 'RATE_MOVIE_ERROR'
+export const GET_MOVIE_LIKES = 'GET_MOVIE_LIKES'
+export const GET_MOVIE_LIKES_ERROR = 'GET_MOVIE_LIKES_ERROR'
+export const LIKE_MOVIE = 'LIKE_MOVIE'
+export const LIKE_MOVIE_ERROR = 'LIKE_MOVIE_ERROR'
 
 export const getMovies = (payload) => ({
   type: GET_MOVIES,
@@ -84,4 +88,22 @@ export const rateMovie = (payload) => ({
 
 export const ratingMovieError = () => ({
   type: RATE_MOVIE_ERROR
+})
+
+export const getMovieLikes = (payload) => ({
+  type: GET_MOVIE_LIKES,
+  payload
+})
+
+export const getMovieLikesError = () => ({
+  type: GET_MOVIE_LIKES_ERROR
+})
+
+export const likeMovie = (payload) => ({
+  type: LIKE_MOVIE,
+  payload
+})
+
+export const likeMovieError = () => ({
+  type: LIKE_MOVIE_ERROR
 })

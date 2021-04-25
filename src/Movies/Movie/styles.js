@@ -73,13 +73,17 @@ export const Rating = styled.div`
 `
 
 export const StyledHeart = styled(FontAwesomeIcon)`
-  color: red;
+  color: ${({ isLiked }) => (isLiked ? 'red' : 'gray')};
+  font-size: 20px;
+  margin-left: 8px;
+  margin-top: 7px;
+  cursor: pointer;
 `
 
 export const Likes = styled.div`
-  margin-left: 5px;
+  margin-left: 7px;
   color: white;
-  margin-top: -5px;
+  margin-top: 4px;
 `
 
 export const RateThis = styled.span`

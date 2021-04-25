@@ -28,12 +28,14 @@ class SingleMovie extends React.Component {
     const {
       getMovie,
       getMovieRating,
+      getMovieLikes,
       match: {
         params: { id }
       }
     } = this.props
     getMovie(id)
     getMovieRating(id)
+    getMovieLikes(id)
   }
 
   handleDelete = () => {
@@ -57,17 +59,39 @@ class SingleMovie extends React.Component {
     rateMovies(id, selectedRating)
   }
 
+  handleLikeMovie = () => {
+    const {
+      likeMovies,
+      match: {
+        params: { id }
+      }
+    } = this.props
+    likeMovies(id)
+  }
+
+  handleLikes = () => {
+    const {likeData} = this.props
+    const {count: likesCount} = likeData
+
+    if (likesCount > 1 || likesCount === 0) {
+      return `${likesCount} likes`
+    }
+    return `${likesCount} like`
+  }
+
   render() {
     const {
       movie,
       ratingData,
+      likeData,
       isFetchingMovie,
       isFetchingRating,
       isAuth
     } = this.props
-    const { title, genres, writers, cast, plot, year, likes, img } = movie
+    const { title, genres, writers, cast, plot, year, img } = movie
     if (isFetchingMovie) return <Spinner />
-    const { average, count, myRating } = ratingData
+    const { average, count: ratingsCount, myRating } = ratingData
+    const {isLiked} = likeData
     return (
       <Wrap>
         <StyledImage src={img} alt="hello"></StyledImage>
@@ -78,6 +102,10 @@ class SingleMovie extends React.Component {
             <Year>({year})</Year>
           </GenreContainer>
           <IconContainer>
+            <StyledHeart icon={faHeart} onClick={this.handleLikeMovie} isLiked={isLiked} />
+            <Likes>{this.handleLikes()}</Likes>
+          </IconContainer>
+          <IconContainer>
             <RateThis>Rate this: </RateThis>
             {!isFetchingRating && (
               <Rating>
@@ -85,7 +113,6 @@ class SingleMovie extends React.Component {
                   count={5}
                   size={24}
                   activeColor="#ffd700"
-                  // isHalf={true}
                   emptyIcon={<i className="far fa-star"></i>}
                   halfIcon={<i className="fa fa-star-half-alt"></i>}
                   fullIcon={<i className="fa fa-star"></i>}
@@ -97,15 +124,11 @@ class SingleMovie extends React.Component {
             )}
           </IconContainer>
           <AvgRating>
-            {average}/5 ({count} user ratings)
+            {average}/5 ({ratingsCount} user ratings)
           </AvgRating>
           <Plot>{plot}</Plot>
           <Writers>Writers : {writers}</Writers>
           <Cast>Cast : {cast}</Cast>
-          <IconContainer>
-            <StyledHeart icon={faHeart} />
-            <Likes>{likes}</Likes>
-          </IconContainer>
           <Button variant="primary" style={{ width: '30%', marginTop: '20px' }}>
             Watch Now
           </Button>
