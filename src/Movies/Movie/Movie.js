@@ -69,16 +69,6 @@ class SingleMovie extends React.Component {
     likeMovies(id)
   }
 
-  handleLikes = () => {
-    const {likeData} = this.props
-    const {count: likesCount} = likeData
-
-    if (likesCount > 1 || likesCount === 0) {
-      return `${likesCount} likes`
-    }
-    return `${likesCount} like`
-  }
-
   render() {
     const {
       movie,
@@ -91,7 +81,7 @@ class SingleMovie extends React.Component {
     const { title, genres, writers, cast, plot, year, img } = movie
     if (isFetchingMovie) return <Spinner />
     const { average, count: ratingsCount, myRating } = ratingData
-    const {isLiked} = likeData
+    const {count: likesCount, isLiked} = likeData
     return (
       <Wrap>
         <StyledImage src={img} alt="hello"></StyledImage>
@@ -103,7 +93,7 @@ class SingleMovie extends React.Component {
           </GenreContainer>
           <IconContainer>
             <StyledHeart icon={faHeart} onClick={this.handleLikeMovie} isLiked={isLiked} />
-            <Likes>{this.handleLikes()}</Likes>
+            <Likes>{`${likesCount} like${likesCount !== 1 ? 's' : ''}`}</Likes>
           </IconContainer>
           <IconContainer>
             <RateThis>Rate this: </RateThis>
