@@ -119,17 +119,17 @@ class SingleMovie extends React.Component {
           <Plot>{plot}</Plot>
           <Writers>Writers : {writers}</Writers>
           <Cast>Cast : {cast}</Cast>
-          <Button variant="primary" style={{ width: '30%', marginTop: '20px' }}>
+          <Button variant="primary" style={{ width: '30%', marginTop: '15px' }}>
             Watch Now
           </Button>
           <Link to={`/movie/${movie.id}/edit`}>
-            <Button variant="light" style={{ width: '30%', marginTop: '20px' }}>
+            <Button variant="light" style={{ width: '30%', marginTop: '15px' }}>
               Edit
             </Button>
           </Link>
           <Button
             variant="secondary"
-            style={{ width: '30%', marginTop: '20px' }}
+            style={{ width: '30%', marginTop: '15px' }}
             onClick={this.handleDelete}
           >
             Delete
