@@ -11,6 +11,11 @@ export const Wrap = styled.div`
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
+
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+  }
 `
 
 export const LoginText = styled.div`
@@ -18,6 +23,14 @@ export const LoginText = styled.div`
   font-size: 30px;
   margin-top: 30px;
   text-align: center;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 40px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+  }
 `
 
 export const OuterDiv = styled.div`
@@ -26,12 +39,33 @@ export const OuterDiv = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  @media only screen and (max-width: 768px) {
+    width: 500px;
+    height: 100vh;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 350px;
+    height: 100vh;
+  }
 `
 
 export const FormContainer = styled.div`
   width: 400px;
   height: 400px;
   background-image: linear-gradient(darkslateblue, mediumorchid);
+
+  
+  @media only screen and (max-width: 768px) {
+    width: 500px;
+    height: 500px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 350px;
+    height: 400px;
+  }
 `
 
 export const StyledContainer = styled(Container)`
@@ -52,6 +86,16 @@ export const DontHaveAccount = styled.div`
   font-size: 14px;
   text-align: center;
   margin-top: 50px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 22px;
+    margin-top: 90px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 18px;
+    margin-top: 70px;
+  }
 `
 
 export const CheckboxText = styled(FormCheck)`

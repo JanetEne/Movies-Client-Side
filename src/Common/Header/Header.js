@@ -1,16 +1,15 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import { Navbar, Nav, Form, FormControl } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { getIsAuth } from '../../store/auth/selectors'
-import { StyledNavtext, Wrap, StyledNav } from './styles'
+import { StyledNavtext, StyledNav, StyledButton } from './styles'
 
 const HeaderComponent = () => {
   const isAuth = useSelector(getIsAuth)
 
   return (
-    <Wrap>
-    <Navbar expand="lg">
+    <Navbar expand="lg" bg="dark" variant="dark">
       <StyledNavtext href="#home">Movies</StyledNavtext>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -24,11 +23,10 @@ const HeaderComponent = () => {
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-success">Search</Button>
+          <StyledButton variant="outline-success">Search</StyledButton>
         </Form>
       </Navbar.Collapse>
     </Navbar>
-    </Wrap>
   )
 }
 
