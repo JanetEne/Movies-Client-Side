@@ -10,6 +10,10 @@ export const WelcomeText = styled.div`
   text-align: center;
   font weight: bold;
   font-family: Helvetica;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 30px;
+  }
 `
 
 export const Text = styled.div`
@@ -19,4 +23,8 @@ export const Text = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: Helvetica;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 15px;
+  }
 `
