@@ -158,7 +158,6 @@ export const ButtonContainer = styled.div`
   flex-direction: column;
   
   @media only screen and (max-width: 768px) {
-    display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-bottom: 15px;
