@@ -27,7 +27,7 @@ class Slide extends React.Component {
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 1,
+            slidesToShow: 2,
             slidesToScroll: 1,
             initialSlide: 2
           }
