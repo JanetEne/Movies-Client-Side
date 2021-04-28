@@ -1,6 +1,5 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
 import ReactStars from 'react-rating-stars-component'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import Spinner from '../../Common/Spinner'
@@ -20,7 +19,9 @@ import {
   StyledHeart,
   Likes,
   AvgRating,
-  RateThis
+  RateThis,
+  StyledButton,
+  ButtonContainer
 } from './styles'
 
 class SingleMovie extends React.Component {
@@ -106,21 +107,22 @@ class SingleMovie extends React.Component {
             <StyledHeart icon={faHeart} />
             <Likes>{likes}</Likes>
           </IconContainer>
-          <Button variant="primary" style={{ width: '30%', marginTop: '20px' }}>
+          <ButtonContainer>
+          <StyledButton variant="primary">
             Watch Now
-          </Button>
+          </StyledButton>
           <Link to={`/movie/${movie.id}/edit`}>
-            <Button variant="light" style={{ width: '30%', marginTop: '20px' }}>
+            <StyledButton variant="light">
               Edit
-            </Button>
+            </StyledButton>
           </Link>
-          <Button
+          <StyledButton
             variant="secondary"
-            style={{ width: '30%', marginTop: '20px' }}
             onClick={this.handleDelete}
           >
             Delete
-          </Button>
+          </StyledButton>
+          </ButtonContainer>
         </ItemContainer>
       </Wrap>
     )
