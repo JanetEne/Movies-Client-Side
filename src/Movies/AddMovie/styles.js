@@ -49,6 +49,7 @@ export const UploadImage = styled(FormFile)`
   opacity: 0;
   position: absolute;
   z-index: -1;
+  width: 50px;
 `
 
 export const StyledButton = styled(Button)`
