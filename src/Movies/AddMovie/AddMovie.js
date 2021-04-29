@@ -6,7 +6,8 @@ import {
   FormInput,
   FileLabel,
   UploadImage,
-  StyledContainer,
+  LeftContainer,
+  RightContainer,
   StyledButton
 } from './styles'
 import { Form, Button } from 'react-bootstrap'
@@ -118,7 +119,8 @@ class AddMovieComponent extends React.Component {
     const { title, writers, plot, cast, year, genres, img, id } = this.state
     return (
       <Wrap>
-        <StyledContainer>
+        <RightContainer />
+        <LeftContainer>
           <Title>Add a Movie</Title>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="formGroupTitle">
@@ -280,7 +282,7 @@ class AddMovieComponent extends React.Component {
               </Link>
             )}
           </Form>
-        </StyledContainer>
+        </LeftContainer>
       </Wrap>
     )
   }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {showAlert, hideAlert} from '../alert/actionTypes'
 import {
   getMovies,
   getMoviesError,
@@ -50,6 +51,7 @@ export const postMovie = (newMovie, history) => async (dispatch, getState) => {
     }
     const res = await axios.post(`${apiUrl}/movies`, newMovie, { headers })
     dispatch(addMovie(res.data))
+    dispatch(showAlert('Success!', 'success', 'movie added'))
     history ? history.push(`/movies/${res.data.id}`) : window.location.reload()
   } catch (e) {
     dispatch(addMovieError())
@@ -80,6 +82,7 @@ export const updateMovie = (details, id) => async (dispatch, getState) => {
     }
     const res = await axios.put(`${apiUrl}/movies/${id}`, details, { headers })
     dispatch(editMovie(res.data))
+    dispatch(showAlert('Success!', 'success', 'movie edited successfully'))
   } catch (e) {
     dispatch(editMovieError())
   }
