@@ -10,12 +10,18 @@ import {
 export const Wrap = styled.div`
   width: 100%;
   height: 100%;
-  background-color: white;
   margin-bottom: 100px;
+  display: flex;
 `
-export const StyledContainer = styled(Container)`
-  width: 100%;
-  height: 100%;
+export const LeftContainer = styled(Container)`
+  width: 600px;
+  height: 900px;
+`
+export const RightContainer = styled.div`
+  width: 600px;
+  height: 900px;
+  background-image: url(http://images.fandango.com/MDCsite/images/featured/201111/posters7.jpg);
+  background-size: contain;
 `
 
 export const Title = styled.div`
@@ -43,10 +49,11 @@ export const UploadImage = styled(FormFile)`
   opacity: 0;
   position: absolute;
   z-index: -1;
+  width: 50px;
 `
 
 export const StyledButton = styled(Button)`
   margin-left: 150px;
-  width: 30%; 
+  width: 30%;
   margin-top: 10px;
 `

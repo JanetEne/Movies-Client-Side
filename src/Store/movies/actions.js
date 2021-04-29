@@ -1,3 +1,5 @@
+import axios from 'axios'
+import {showAlert, hideAlert} from '../alert/actionTypes'
 import {
   getMovies,
   getMoviesError,
@@ -10,11 +12,15 @@ import {
   editMovie,
   editMovieError,
   getMyMovies,
-  getMyMoviesError
+  getMyMoviesError,
+  rateMovie,
+  ratingMovieError,
+  getMovieRatings,
+  getMovieRatingsError
 } from './actionTypes'
-import axios from 'axios'
+import { isFetchingStart, isFetchingEnd } from '../isFetching/actions'
 
-const apiUrl = 'http://localhost:8080/api/v1' //process.env.REACT_APP_API_URL
+const apiUrl = process.env.REACT_APP_API_URL
 
 export const fetchMovies = () => async (dispatch) => {
   try {
@@ -27,8 +33,10 @@ export const fetchMovies = () => async (dispatch) => {
 
 export const fetchMovie = (id) => async (dispatch) => {
   try {
+    dispatch(isFetchingStart('movie'))
     const res = await axios.get(`${apiUrl}/movie/${id}`)
     dispatch(getMovie(res.data))
+    dispatch(isFetchingEnd('movie'))
   } catch (e) {
     dispatch(getMovieError())
   }
@@ -39,10 +47,11 @@ export const postMovie = (newMovie, history) => async (dispatch, getState) => {
     const state = getState()
     const token = state.auth.token
     const headers = {
-      Authorization: `Bearer ${token}`
+      authorization: `Bearer ${token}`
     }
     const res = await axios.post(`${apiUrl}/movies`, newMovie, { headers })
     dispatch(addMovie(res.data))
+    dispatch(showAlert('Success!', 'success', 'movie added'))
     history ? history.push(`/movies/${res.data.id}`) : window.location.reload()
   } catch (e) {
     dispatch(addMovieError())
@@ -73,6 +82,7 @@ export const updateMovie = (details, id) => async (dispatch, getState) => {
     }
     const res = await axios.put(`${apiUrl}/movies/${id}`, details, { headers })
     dispatch(editMovie(res.data))
+    dispatch(showAlert('Success!', 'success', 'movie edited successfully'))
   } catch (e) {
     dispatch(editMovieError())
   }
@@ -89,5 +99,35 @@ export const fetchMyMovies = () => async (dispatch, getState) => {
     dispatch(getMyMovies(res.data))
   } catch (e) {
     dispatch(getMyMoviesError())
+  }
+}
+
+export const fetchMovieRatings = (id) => async (dispatch, getState) => {
+  const state = getState()
+  const userId = state.auth.id
+  try {
+    dispatch(isFetchingStart('rating'))
+    const res = await axios.get(`${apiUrl}/rating/${id}?${userId ? `userId=${userId}` : ''}`)
+    dispatch(getMovieRatings(res.data))
+    dispatch(isFetchingEnd('rating'))
+  } catch (e) {
+    dispatch(getMovieRatingsError())
+  }
+}
+
+export const rateAMovie = (id, rating) => async (dispatch, getState) => {
+  try {
+    const state = getState()
+    const token = state.auth.token
+    const headers = {
+      Authorization: `Bearer ${token}`
+    }
+    const res = await axios.post(`${apiUrl}/rating/${id}`, {rating}, { headers })
+    dispatch(rateMovie(res))
+    setTimeout(() => {
+      dispatch(fetchMovieRatings(id))
+    }, 2000)
+  } catch (e) {
+    dispatch(ratingMovieError())
   }
 }

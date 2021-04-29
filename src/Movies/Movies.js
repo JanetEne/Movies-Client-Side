@@ -1,6 +1,7 @@
 import React from 'react'
 import MoviesCard from '../Common/MoviesCard/MoviesCard'
 import { Row } from 'react-bootstrap'
+import Spinner from '../Common/Spinner'
 import { StyledContainer, Wrap } from './style'
 
 class Movies extends React.Component {
@@ -11,7 +12,7 @@ class Movies extends React.Component {
   render() {
     const { movies } = this.props
 
-    if (movies.length < 1) return <div>...fetching</div>
+    if (movies.length < 1) return <Spinner />
 
     return (
       <Wrap>
