@@ -9,7 +9,7 @@ import Alert from './Common/Alert'
 
 const App = () => {
   return (
-    <div classname='app'>
+    <div className='app'>
       <HeaderComponent />
       <Routes />
       <Alert />

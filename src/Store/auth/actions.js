@@ -9,7 +9,7 @@ import {
 import axios from 'axios'
 import localForage from 'localforage'
 
-const apiUrl = 'http://localhost:8080/api/users'
+const apiUrl = process.env.REACT_APP_API_URL
 
 export const signUp = (newUser, history) => async (dispatch) => {
   try {

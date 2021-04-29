@@ -68,8 +68,7 @@ export const StyledIcon = styled(FontAwesomeIcon)`
 `
 
 export const Rating = styled.div`
-  margin-left: 10px;
-  color: white;
+  margin-left: 4px;
   margin-top: -5px;
 `
 
@@ -81,4 +80,18 @@ export const Likes = styled.div`
   margin-left: 5px;
   color: white;
   margin-top: -5px;
+`
+
+export const RateThis = styled.span`
+ color: white;
+ margin-left: 5px;
+ line-height: 29px;
+ font-weight: bold;
+`
+
+export const AvgRating = styled.div`
+ color: white;
+ margin-left: 5px;
+ line-height: 29px;
+ font-weight: bold;
 `

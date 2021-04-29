@@ -5,7 +5,7 @@ export const ADD_A_USER_ERROR = 'ADD_A_USER_ERROR'
 export const LOGOUT = 'LOGOUT'
 export const LOGOUT_ERROR = 'LOGOUT_ERROR'
 
-export const addUser = (payload) => ({
+  export const addUser = (payload) => ({
     type: ADD_A_USER,
     payload
   })
