@@ -21,7 +21,8 @@ import {
   AvgRating,
   RateThis,
   StyledButton,
-  ButtonContainer
+  ButtonContainer,
+  EditButton
 } from './styles'
 
 class SingleMovie extends React.Component {
@@ -112,9 +113,8 @@ class SingleMovie extends React.Component {
             Watch Now
           </StyledButton>
           <Link to={`/movie/${movie.id}/edit`}>
-            <StyledButton variant="light">
-              Edit
-            </StyledButton>
+          <EditButton>Edit
+          </EditButton>
           </Link>
           <StyledButton
             variant="secondary"

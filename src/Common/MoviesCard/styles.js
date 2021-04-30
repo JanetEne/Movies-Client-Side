@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const Container = styled.div`
   width: 300px;
   height: 350px;
-`
+  `
 
 export const ImageContainer = styled.div`
   transition: 0.5s z-index ease-in-out;
@@ -31,6 +31,10 @@ export const InnerImageWrap = styled.div`
     transform: translateZ(0) scale(1.25);
     z-index: 2;
   }
+
+  @media only screen and (max-width: 600px) {
+    width: 390px;
+  }
 `
 
 export const StyledImage = styled.img`
@@ -39,6 +43,10 @@ export const StyledImage = styled.img`
   transition: 0.5s filter ease;
   max-width: 100%;
   height: 400px;
+
+  @media only screen and (max-width: 600px) {
+    width: 500px;
+  }
 `
 
 export const IconContainer = styled.div`

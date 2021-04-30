@@ -50,11 +50,6 @@ export const Title = styled.div`
     margin-top: 10px;
     font-size: 28px;
   }
-
-  @media only screen and (max-width: 600px) {
-    margin-top: 10px;
-    font-size: 28px;
-  }
 `
 
 export const GenreContainer = styled.div`
@@ -145,21 +140,36 @@ export const AvgRating = styled.div`
 `
 
 export const StyledButton = styled(Button)`
-  width: 30%;
+  width: 150px;
   margin-top: 15px;
-
-  @media only screen and (max-width: 768px) {
-    width: 30%;
-  }
 `
 
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-  
+  margin-bottom: 15px;
+
   @media only screen and (max-width: 768px) {
     flex-direction: row;
     justify-content: space-around;
-    margin-bottom: 15px;
+  }
+  @media only screen and (max-width: 600px) {
+    margin-left: -10px;
+    margin-right: 10px;
+  }
+`
+
+export const EditButton = styled.div`
+  width: 150px;
+  height: 40px;
+  background-color: gray;
+  margin-top: 15px;
+  color: white;
+  padding: 8px 60px;
+  border-radius: 5px;
+
+  @media only screen and (max-width: 600px) {
+    width: 120px;
+    padding: 6px 45px;
   }
 `
