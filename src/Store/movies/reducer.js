@@ -14,9 +14,14 @@ const initialState = {
   movie: {},
   myMovies: [],
   rating: {
-    average: undefined
+    count: 0,
+    average: 0,
+    myRating: 0
   },
-  likes: {}
+  likes: {
+    count: 0,
+    isLiked: false
+  }
 }
 
 const reducer = (state = initialState, action) => {
@@ -51,16 +56,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         rateMovie: action.payload
       }
-      case GET_MOVIE_LIKES:
-        return {
-          ...state,
-          likes: action.payload
-        }
-      case LIKE_MOVIE:
-        return {
-          ...state,
-          likeMovie: action.payload
-        }
+    case GET_MOVIE_LIKES:
+      return {
+        ...state,
+        likes: action.payload
+      }
+    case LIKE_MOVIE:
+      return {
+        ...state,
+        likeMovie: action.payload
+      }
     default:
       return state
   }
