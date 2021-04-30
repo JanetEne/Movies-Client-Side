@@ -16,7 +16,11 @@ import {
   rateMovie,
   ratingMovieError,
   getMovieRatings,
-  getMovieRatingsError
+  getMovieRatingsError,
+  likeMovie,
+  likeMovieError,
+  getMovieLikes,
+  getMovieLikesError
 } from './actionTypes'
 import { isFetchingStart, isFetchingEnd } from '../isFetching/actions'
 
@@ -126,8 +130,39 @@ export const rateAMovie = (id, rating) => async (dispatch, getState) => {
     dispatch(rateMovie(res))
     setTimeout(() => {
       dispatch(fetchMovieRatings(id))
-    }, 2000)
+    }, 1000)
   } catch (e) {
     dispatch(ratingMovieError())
   }
 }
+
+export const fetchMovieLikes = (id) => async (dispatch, getState) => {
+  const state = getState()
+  const userId = state.auth.id
+  try {
+    dispatch(isFetchingStart('like'))
+    const res = await axios.get(`${apiUrl}/likes/${id}?${userId ? `userId=${userId}` : ''}`)
+    dispatch(getMovieLikes(res.data))
+    dispatch(isFetchingEnd('like'))
+  } catch (e) {
+    dispatch(getMovieLikesError())
+  }
+}
+
+export const likeAMovie = (id) => async (dispatch, getState) => {
+  try {
+    const state = getState()
+    const token = state.auth.token
+    const headers = {
+      Authorization: `Bearer ${token}`
+    }
+    const res = await axios.post(`${apiUrl}/likes/${id}`, {}, { headers })
+    dispatch(likeMovie(res))
+    setTimeout(() => {
+      dispatch(fetchMovieLikes(id))
+    }, 1000)
+  } catch (e) {
+    dispatch(likeMovieError())
+  }
+}
+
