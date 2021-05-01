@@ -19,7 +19,6 @@ export const ImageContainer = styled.div`
 `
 
 export const InnerImageWrap = styled.div`
-  position: relative;
   width: 300px;
   height: 350px;
   padding: 3px;
@@ -53,6 +52,8 @@ export const IconContainer = styled.div`
   position: absolute;
   top: 30px;
   right: 30px;
+  display: flex;
+  flex-direction: column;
 `
 
 export const StyledIcon = styled(FontAwesomeIcon)`
