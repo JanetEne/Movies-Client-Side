@@ -35,7 +35,7 @@ export const LoginText = styled.div`
 
 export const OuterDiv = styled.div`
   width: 400px;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -47,7 +47,7 @@ export const OuterDiv = styled.div`
 
   @media only screen and (max-width: 600px) {
     width: 350px;
-    height: 100vh;
+    height: 91.5vh;
   }
 `
 

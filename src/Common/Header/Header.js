@@ -18,8 +18,9 @@ const HeaderComponent = () => {
           <StyledNav  as= {Link} to='/movies'>Movies</StyledNav>
           {!isAuth && <StyledNav  as= {Link} to='/signup'>SignUp</StyledNav>}
           {!isAuth && <StyledNav  as= {Link} to='/login'>SignIn</StyledNav>}
+          {isAuth && <StyledNav  as= {Link} to='/movie/add'>Add a Movie</StyledNav>}
+          {isAuth && <StyledNav  as= {Link} to='/my-movies'>My Movies</StyledNav>}
           {isAuth && <StyledNav  as= {Link} to='/logout'>Logout</StyledNav>}
-          <StyledNav  as= {Link} to='/movie/add'>Add a Movie</StyledNav>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
