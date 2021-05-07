@@ -2,8 +2,13 @@ import styled from '@emotion/styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Container = styled.div`
+  position: relative;
   width: 300px;
   height: 350px;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `
 
 export const ImageContainer = styled.div`
@@ -30,6 +35,10 @@ export const InnerImageWrap = styled.div`
     transform: translateZ(0) scale(1.25);
     z-index: 2;
   }
+
+  @media only screen and (max-width: 600px) {
+    width: 390px;
+  }
 `
 
 export const StyledImage = styled.img`
@@ -38,6 +47,10 @@ export const StyledImage = styled.img`
   transition: 0.5s filter ease;
   max-width: 100%;
   height: 400px;
+
+  @media only screen and (max-width: 600px) {
+    width: 500px;
+  }
 `
 
 export const IconContainer = styled.div`
@@ -46,9 +59,22 @@ export const IconContainer = styled.div`
   right: 30px;
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 600px) {
+    right: 30px;
+    top: 10px;
+  }
 `
 
 export const StyledIcon = styled(FontAwesomeIcon)`
   color: white;
   margin-left: 5px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+  }
 `

@@ -1,16 +1,12 @@
 /* eslint-disable import/prefer-default-export */
 import styled from '@emotion/styled'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav, Button } from 'react-bootstrap'
 
 export const StyledNavtext = styled(Navbar)`
   font-weight: bold;
   font-size: 25px;
   font-family: Comic Sans MS;
   color: white;
-`
-
-export const Wrap = styled.div`
-  background-color: black;
 `
 
 export const StyledNav = styled(Nav)`
@@ -22,5 +18,11 @@ export const StyledNav = styled(Nav)`
   &:hover {
     color: thistle;
     text-decoration: none;
+  }
+`
+
+export const StyledButton = styled(Button)`
+  @media only screen and (max-width: 600px) {
+    margin-top: 10px;
   }
 `

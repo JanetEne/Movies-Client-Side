@@ -8,7 +8,8 @@ import {
   UploadImage,
   LeftContainer,
   RightContainer,
-  StyledButton
+  StyledButton,
+  ButtonContainer
 } from './styles'
 import { Form, Button } from 'react-bootstrap'
 
@@ -46,19 +47,22 @@ class AddMovieComponent extends React.Component {
         id: this.props.movie.id
       })
     }
-    if (this.checkIsAddNew(this.props.match.url) !== this.checkIsAddNew(prevProps.match.url)) {
+    if (
+      this.checkIsAddNew(this.props.match.url) !==
+      this.checkIsAddNew(prevProps.match.url)
+    ) {
       this.resetState()
     }
   }
 
   fetchMovie = () => {
-      const {
-        getMovie,
-        match: {
-          params: { id }
-        }
-      } = this.props
-      getMovie(id)
+    const {
+      getMovie,
+      match: {
+        params: { id }
+      }
+    } = this.props
+    getMovie(id)
   }
 
   checkIsEdit = (url) => {
@@ -267,20 +271,22 @@ class AddMovieComponent extends React.Component {
                 onChange={this.handleInputChange}
               />
             </Form.Group>
-            <Button
-              variant="info"
-              value="submit"
-              type="submit"
-              style={{ width: '30%', marginTop: '10px', marginLeft: '150px'}}
-              onClick={this.handleSubmit}
-            >
-              Submit
-            </Button>
-            {isEdit && (
-              <Link to={`/movies/${id}`}>
-                <StyledButton variant="info">View</StyledButton>
-              </Link>
-            )}
+            <ButtonContainer>
+              <Button
+                variant="info"
+                value="submit"
+                type="submit"
+                style={{ width: '30%', marginTop: '10px', marginLeft: '50px' }}
+                onClick={this.handleSubmit}
+              >
+                Submit
+              </Button>
+              {isEdit && (
+                <Link to={`/movies/${id}`}>
+                  <StyledButton variant="info">View</StyledButton>
+                </Link>
+              )}
+            </ButtonContainer>
           </Form>
         </LeftContainer>
       </Wrap>

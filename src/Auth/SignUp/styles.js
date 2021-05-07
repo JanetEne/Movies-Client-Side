@@ -10,6 +10,11 @@ export const Wrap = styled.div`
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
+
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+  }
 `
 
 export const SignupText = styled.div`
@@ -17,20 +22,48 @@ export const SignupText = styled.div`
   font-size: 30px;
   margin-top: 20px;
   text-align: center;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 40px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+  }
 `
 
 export const OuterDiv = styled.div`
   width: 400px;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  @media only screen and (max-width: 768px) {
+    width: 550px;
+    height: 93vh;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 350px;
+    height: 91.5vh;
+  }
 `
 
 export const FormContainer = styled.div`
   width: 400px;
   height: 500px;
   background-image: linear-gradient(darkslateblue, mediumorchid);
+
+  @media only screen and (max-width: 768px) {
+    width: 550px;
+    height: 560px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 350px;
+    height: 460px;
+  }
 `
 
 export const StyledContainer = styled(Container)`
@@ -42,6 +75,16 @@ export const BottomText = styled.div`
   font-size: 14px;
   text-align: center;
   margin-top: 12px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 22px;
+    margin-top: 70px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 16px;
+    margin-top: 12px;
+  }
 `
 export const FormInput = styled(FormControl)`
   background: transparent;

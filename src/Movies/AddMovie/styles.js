@@ -1,15 +1,9 @@
 import styled from '@emotion/styled'
-import {
-  FormControl,
-  FormFile,
-  FormLabel,
-  Container,
-  Button
-} from 'react-bootstrap'
+import { FormControl, FormFile, FormLabel, Container } from 'react-bootstrap'
 
 export const Wrap = styled.div`
   width: 100%;
-  height: 100%;
+  height: 90%;
   margin-bottom: 100px;
   display: flex;
 `
@@ -22,6 +16,13 @@ export const RightContainer = styled.div`
   height: 900px;
   background-image: url(http://images.fandango.com/MDCsite/images/featured/201111/posters7.jpg);
   background-size: contain;
+
+  @media only screen and (max-width: 600px) {
+    width: 0px;
+    height: 0px;
+    background-image: none;
+    background-size: auto;
+  }
 `
 
 export const Title = styled.div`
@@ -52,8 +53,25 @@ export const UploadImage = styled(FormFile)`
   width: 50px;
 `
 
-export const StyledButton = styled(Button)`
+export const StyledButton = styled.div`
   margin-left: 150px;
-  width: 30%;
+  width: 80px;
+  height: 40px;
   margin-top: 10px;
+  background-color: #009698;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 22px;
+
+  @media only screen and (max-width: 768px) {
+    margin-left: 80px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    margin-left: 60px;
+  }
+`
+
+export const ButtonContainer = styled.div`
+  display: flex;
 `

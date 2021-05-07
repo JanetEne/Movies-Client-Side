@@ -14,7 +14,25 @@ class Slide extends React.Component {
       speed: 3000,
       autoplaySpeed: 2000,
       cssEase: 'linear',
-      pauseOnHover: true
+      pauseOnHover: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            initialSlide: 2
+          }
+        },
+      ]
     }
     const { slides } = this.props
     return (

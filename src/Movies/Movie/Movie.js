@@ -1,6 +1,5 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
 import ReactStars from 'react-rating-stars-component'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import Spinner from '../../Common/Spinner'
@@ -20,7 +19,10 @@ import {
   StyledHeart,
   Likes,
   AvgRating,
-  RateThis
+  RateThis,
+  StyledButton,
+  ButtonContainer,
+  EditButton
 } from './styles'
 
 class SingleMovie extends React.Component {
@@ -81,7 +83,7 @@ class SingleMovie extends React.Component {
     const { title, genres, writers, cast, plot, year, img } = movie
     if (isFetchingMovie) return <Spinner />
     const { average, count: ratingsCount, myRating } = ratingData
-    const {count: likesCount, isLiked} = likeData
+    const { count: likesCount, isLiked } = likeData
     return (
       <Wrap>
         <StyledImage src={img} alt="hello"></StyledImage>
@@ -92,7 +94,11 @@ class SingleMovie extends React.Component {
             <Year>({year})</Year>
           </GenreContainer>
           <IconContainer>
-            <StyledHeart icon={faHeart} onClick={this.handleLikeMovie} isLiked={isLiked} />
+            <StyledHeart
+              icon={faHeart}
+              onClick={this.handleLikeMovie}
+              isLiked={isLiked}
+            />
             <Likes>{`${likesCount} like${likesCount !== 1 ? 's' : ''}`}</Likes>
           </IconContainer>
           <IconContainer>
@@ -119,21 +125,15 @@ class SingleMovie extends React.Component {
           <Plot>{plot}</Plot>
           <Writers>Writers : {writers}</Writers>
           <Cast>Cast : {cast}</Cast>
-          <Button variant="primary" style={{ width: '30%', marginTop: '15px' }}>
-            Watch Now
-          </Button>
-          <Link to={`/movie/${movie.id}/edit`}>
-            <Button variant="light" style={{ width: '30%', marginTop: '15px' }}>
-              Edit
-            </Button>
-          </Link>
-          <Button
-            variant="secondary"
-            style={{ width: '30%', marginTop: '15px' }}
-            onClick={this.handleDelete}
-          >
-            Delete
-          </Button>
+          <ButtonContainer>
+            <StyledButton variant="primary">Watch Now</StyledButton>
+            <Link to={`/movie/${movie.id}/edit`}>
+              <EditButton>Edit</EditButton>
+            </Link>
+            <StyledButton variant="secondary" onClick={this.handleDelete}>
+              Delete
+            </StyledButton>
+          </ButtonContainer>
         </ItemContainer>
       </Wrap>
     )
