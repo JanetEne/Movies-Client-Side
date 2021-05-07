@@ -42,7 +42,7 @@ export const OuterDiv = styled.div`
 
   @media only screen and (max-width: 768px) {
     width: 500px;
-    height: 100vh;
+    height: 93vh;
   }
 
   @media only screen and (max-width: 600px) {

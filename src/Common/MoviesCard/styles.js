@@ -2,9 +2,14 @@ import styled from '@emotion/styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Container = styled.div`
+  position: relative;
   width: 300px;
   height: 350px;
-  `
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+`
 
 export const ImageContainer = styled.div`
   transition: 0.5s z-index ease-in-out;
@@ -54,9 +59,22 @@ export const IconContainer = styled.div`
   right: 30px;
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 600px) {
+    right: 30px;
+    top: 10px;
+  }
 `
 
 export const StyledIcon = styled(FontAwesomeIcon)`
   color: white;
   margin-left: 5px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+  }
 `
