@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Welcome from './Welcome'
-import { fetchMovies } from '../store/movies/actions'
-import { getSliderData } from '../store/movies/selectors'
+import { fetchMovies } from '../Store/movies/actions'
+import { getSliderData } from '../Store/movies/selectors'
 
 const mapStateToProps = (state) => ({
   sliderData: getSliderData(state)

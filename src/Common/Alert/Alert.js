@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Alert from 'react-bootstrap/Alert'
-import { getShowAlert, getAlertDetails } from '../../store/alert/selectors'
-import { hideAlert } from '../../store/alert/actionTypes'
+import { getShowAlert, getAlertDetails } from '../../Store/alert/selectors'
+import { hideAlert } from '../../Store/alert/actionTypes'
 import { AlertContainer } from './styles'
 
 const SimpleAlert = () => {

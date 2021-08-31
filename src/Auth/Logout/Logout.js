@@ -1,7 +1,7 @@
 import { React, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom"
-import { logout } from '../../store/auth/actions'
+import { logout } from '../../Store/auth/actions'
 
 const Logout = () => {
   const dispatch = useDispatch()

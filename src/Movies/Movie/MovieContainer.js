@@ -7,9 +7,9 @@ import {
   rateAMovie,
   fetchMovieLikes,
   likeAMovie
-} from '../../store/movies/actions'
-import { isFetching } from '../../store/isFetching/selectors'
-import { getIsAuth } from '../../store/auth/selectors'
+} from '../../Store/movies/actions'
+import { isFetching } from '../../Store/isFetching/selectors'
+import { getIsAuth } from '../../Store/auth/selectors'
 
 const mapStateToProps = (state) => ({
   movie: state.movies.movie,

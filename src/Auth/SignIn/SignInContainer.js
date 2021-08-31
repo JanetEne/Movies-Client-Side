@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import { loginAUser } from '../../store/auth/actions'
+import { loginAUser } from '../../Store/auth/actions'
 import LoginUser from './Signin'
-import { getIsAuth } from '../../store/auth/selectors'
+import { getIsAuth } from '../../Store/auth/selectors'
 
 const mapStateToProps = (state) => ({
   isAuth: getIsAuth(state)

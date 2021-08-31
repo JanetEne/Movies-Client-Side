@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import MyMovies from './MyMovies'
-import { fetchMyMovies } from '../../store/movies/actions'
-import { removeMovie } from '../../store/movies/actions'
+import { fetchMyMovies } from '../../Store/movies/actions'
+import { removeMovie } from '../../Store/movies/actions'
 
 const mapStateToProps = (state) => ({
   movies: state.movies.myMovies
